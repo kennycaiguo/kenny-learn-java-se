@@ -36,3 +36,52 @@ public class DectoBin {
 运行：请输入一个十进制整数：
 8
 结果是：1000
+
+#  编程求：∑1+∑2+……+∑100的和
+方法一：public class SegmaTotalTest {
+    public static void main(String[] args) {
+        SegmaTotalTest test = new SegmaTotalTest();
+        int sum = test.SegmaTotal(100);
+        System.out.println("∑1+∑2+……+∑100= " + sum);
+    }
+
+    int SegmaTotal(int n) {
+        int sum = 0;
+        for (int j = 0; j <= n; j++) {
+            for (int i = 0; i <= j; i++) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+}
+
+结果：171700
+
+方法二：
+public class SegmaTotalTest2 {
+    public static void main(String[] args) {
+        SegmaTotalTest2 test = new SegmaTotalTest2();
+        int sum = test.SegmaTotal(100);
+        System.out.println("∑1+∑2+……+∑100= " + sum);
+    }
+
+    int totalTon(int n) { //计算每一个∑n的结果
+        int sum = 0;
+        for (int i = 0; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    int SegmaTotal(int n) { //将所有∑n的结果加起来
+        int segsum = 0;
+        for (int j = 0; j <= n; j++) {
+            segsum += totalTon(j);
+        }
+        return segsum;
+    }
+}
+结果：171700
+
+

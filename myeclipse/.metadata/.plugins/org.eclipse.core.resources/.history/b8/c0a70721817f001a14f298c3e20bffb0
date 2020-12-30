@@ -1,0 +1,5 @@
+package com.kenny.daoImpl;
+
+public class EmployeeDao {
+
+}

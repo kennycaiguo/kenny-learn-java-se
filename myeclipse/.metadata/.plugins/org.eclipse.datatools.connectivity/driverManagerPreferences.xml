@@ -1,0 +1,5 @@
+#DriverManager.Preferences
+#Wed May 20 06:38:49 CST 2020
+org.eclipse.datatools.connectivity.db.derby102.genericDriverTemplate=true
+org.eclipse.datatools.connectivity.db.derby101.genericDriverTemplate=true
+org.eclipse.datatools.connectivity.db.derby.genericDriverTemplate=true

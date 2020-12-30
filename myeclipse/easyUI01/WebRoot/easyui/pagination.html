@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pagination（分页）</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- 导入css文件，没有顺序-->
+    <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+     <!-- 导入js文件，有顺序-->
+     <script type="text/javascript" src="../js/jquery.min.js"></script>
+     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    
+    <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+    
+  
+  </head>
+  
+  <body>
+   
+<!-- 静态方式创建pagination	
+   <div id="paginationID"  -->
+<!-- 	        class="easyui-pagination"  -->
+<!-- 	        data-options="total:2000,pageSize:10"  -->
+<!-- 	        style="background:#efefef; -->
+<!-- 	        border:1px solid #ccc;"> -->
+	        
+<!-- 	   </div>  -->
+
+	   <div id="paginationID" 
+	        style="background:#efefef;
+	        border:1px solid #ccc;">
+	        
+	   </div> 
+	    <script type="text/javascript">
+             
+            
+                $("#paginationID").pagination({
+                   "total":100,
+                   "pageSize":20,
+                   "pageNumber":3,
+                   "pageList":[10,20,30],
+                   
+                });
+             
+        </script>
+	    <script type="text/javascript">
+             
+            
+                $("#paginationID").pagination({
+                                   "onSelectPage":function(pageNumber,pageSize){
+                                       alert("pageNumber="+pageNumber +";"+"pageSize=" +pageSize);
+                                   }
+                                                                                              
+             });
+             
+        </script>
+    
+</body>
+</html>

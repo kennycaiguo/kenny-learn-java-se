@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>easyui-tabs control</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- 导入css文件，没有顺序-->
+    <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+     <!-- 导入js文件，有顺序-->
+     <script type="text/javascript" src="../js/jquery.min.js"></script>
+     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+     <script type="text/javascript">
+      
+     </script>
+    
+  </head>
+  
+  <body>
+   
+	   <div id="tabsID" class="easyui-tabs" style="width:500px;height:250px;" data-options="fit:false,showHeader:true,selected:-1" >
+		   <div title="add new"data-options="iconCls:'icon-add',href:'https://www.facebook.com'" style="padding:20px;display:none">
+		       Add New 
+		   </div>
+		   <div title="Update" data-options="closable:true,iconCls:'icon-edit'" style="overflow:auto;padding:20px;display:none">
+		       Update 
+		   </div>
+		    <div title="Search" data-options="closable:true,iconCls:'icon-search'" style="padding:20px;display:none">
+		       Search
+		   </div>
+
+       </div>
+</body>
+</html>

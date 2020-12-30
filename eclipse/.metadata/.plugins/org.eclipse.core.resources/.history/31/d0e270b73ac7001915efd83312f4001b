@@ -1,0 +1,32 @@
+package dom4jxPath;
+/*
+ * 利用xPath技术操作xml
+ */
+import java.io.File;
+import java.io.FileOutputStream;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+import org.junit.Test;
+ 
+ 
+public class Dom4jXpathDemo {
+   @Test
+   public void xPathTest1() throws Exception {
+	   SAXReader reader=new SAXReader();
+   	Document doc=reader.read(new File("src/contact.xml"));
+   //根“/”修改
+   Element el = (Element)doc.selectSingleNode("/contactList/contact");
+   el.addAttribute("id", "0001");
+   	Element nameEl=(Element)doc.selectSingleNode("/contactList/contact/name");
+   	nameEl.setText("李嘉欣");
+   	FileOutputStream fos=new FileOutputStream("e:/contact.xml");
+	XMLWriter writer=new XMLWriter(fos);
+	writer.write(doc);
+	writer.close();
+   }
+}

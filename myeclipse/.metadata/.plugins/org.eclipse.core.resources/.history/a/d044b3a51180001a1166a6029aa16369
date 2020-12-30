@@ -1,0 +1,49 @@
+package com.kenny.entity;
+
+public class Employee {
+	 private int empId;
+	 private String empName;
+	 private int empdepId;
+	 public int getEmpdepId() {
+		return empdepId;
+	}
+	public void setEmpdepId(int empdepId) {
+		this.empdepId = empdepId;
+	}
+	private String empGender;
+	 private int empSalary;
+	 
+	 
+	public String getEmpGender() {
+		return empGender;
+	}
+	public void setEmpGender(String empGender) {
+		this.empGender = empGender;
+	}
+	public int getEmpSalary() {
+		return empSalary;
+	}
+	public void setEmpSalary(int empSalary) {
+		this.empSalary = empSalary;
+	}
+	public int getEmpId() {
+		return empId;
+	}
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+	public String getEmpName() {
+		return empName;
+	}
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName + ", empdepId=" + empdepId + ", empGender="
+				+ empGender + ", empSalary=" + empSalary + "]";
+	}
+
+	 
+ 
+}

@@ -1,0 +1,15 @@
+package com.kenny.dao;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.kenny.entity.Employee;
+
+public interface IEmployeeDao {
+
+	   void savebyHbn(Employee emp);
+	     void updata(Employee emp,int id);
+	     Employee findbyId(Serializable id);
+	     List<Employee> getAll();
+	     List<Employee> getAll(String empName);
+}

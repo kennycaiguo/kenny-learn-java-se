@@ -1,0 +1,17 @@
+package org.knny.dao;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+
+public class UserDao {
+   private static SessionFactory sf;
+   static{
+	   sf=(SessionFactory) new Configuration().configure().buildSessionFactory();
+   }
+   
+   @Test
+   public void testSave(){
+	   
+   }
+}

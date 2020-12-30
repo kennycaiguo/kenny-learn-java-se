@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="com.kenny.entity">
+	
+	<class name="Employee" table="employee">
+		<!-- 主键映射-->
+		<id name="empId" >
+			<generator class="native"/>
+		</id>
+        <!-- 非主键映射-->
+		<property name="empName" length="20" type="string"></property>
+		<property name="salary" type="double"></property>
+		<!-- 多对一映射 -->
+        <many-to-one name="dept" column="deptId" class="Dept"></many-to-one>
+	</class>
+
+	 
+
+</hibernate-mapping>

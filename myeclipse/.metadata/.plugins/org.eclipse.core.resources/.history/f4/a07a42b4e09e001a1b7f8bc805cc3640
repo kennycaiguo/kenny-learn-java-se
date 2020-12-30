@@ -1,0 +1,17 @@
+create table courses(
+    cid int(5) primary key,
+    cname varchar(20)
+);
+
+create table students(
+    sid int(5) primary key,
+    sname varchar(10),     
+);
+
+create table middles(
+   sid int(5),
+   cid int(5)
+);
+insert into grades(gid,gname) values(1,"java");
+insert into students(sid,sname,sgid) values(1,"jackline",1);
+insert into students(sid,sname,sgid) values(2,"mary",1);

@@ -1,0 +1,25 @@
+package zmt.kenny.dao;
+
+import javax.servlet.jsp.tagext.TryCatchFinally;
+
+import org.apache.ibatis.session.SqlSession;
+
+import zmt.kenny.entity.Emp;
+import zmt.kenny.util.MyBatisUtil;
+
+public class EmpDao {
+ //增加员工
+	public void add(Emp emp) throws Exception {
+		SqlSession session=null;
+       try {
+			session=MyBatisUtil.getSqlSession();
+			session.insert(Emp.class.getName()+".add", emp);
+		} catch (Exception e) {
+			 session.rollback();
+			e.printStackTrace();
+			throw e;
+		}finally{
+			MyBatisUtil.closeSqlSession();
+		}
+	}
+}

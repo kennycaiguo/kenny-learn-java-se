@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="org.kenny.entity">
+	
+	<class name="User" table="user">
+		<!-- 主键映射-->
+		<id name="userId" column="id">
+			<generator class="native"/>
+		</id>
+        <!-- 非主键映射-->
+		<property name="userName" column="uname"></property>
+		<!-- Set集合属性映射-->
+		<set name="address" table="address">
+		   <key column="uid"></key>
+		   <element column="address" type="string"></element>
+		 </set>
+		 
+
+	</class>
+
+	 
+
+</hibernate-mapping>

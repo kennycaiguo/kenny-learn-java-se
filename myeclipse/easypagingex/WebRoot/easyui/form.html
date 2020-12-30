@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>form</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>  
+        <form>
+        <table border="1" align="center">
+           <tr><th>姓名：</th><td><input id="nameID"/> </td></tr>
+           <tr><th>入职时间：</th><td><input id="dateID" name="date"/> </td></tr>
+        </table>
+          
+        </form>
+        
+     <script type="text/javascript">
+       $("#nameID").validatebox({
+          "required":true,
+          validType:['length[1,8]','zhongwen']
+       });
+       $("#emailID").validatebox({
+          "required":true,
+          validType:['length[6,30]',"email",]
+       });
+       $("#passID").validatebox({
+          "required":true,
+          validType:['length[1,10]','letternum']
+       });
+       
+       
+       
+       
+     </script>
+     <!-- 自定义规则 ：姓名必须为中文：nameID有效-->
+     <script type="text/javascript">
+        $.extend($.fn.validatebox.defaults.rules, {    
+		    zhongwen:{    
+		        validator: function(value, param){    
+		             if(/^[\u3220-\uFA29]*$/.test(value)){
+		                   return true;    
+							             
+							             }
+							        },    
+							        message: '该文本框只允许输入中文.'   
+					    }    
+					});  
+					        $.extend($.fn.validatebox.defaults.rules, {    
+							    letternum:{    
+							        validator: function(value, param){    
+							             if(/^[a-zA-Z0-9]*$/.test(value)){
+							                   return true;    
+							             
+							             }
+							        },    
+							        message: '密码只允许输入字母和数字.'   
+					    }    
+});  
+        
+  </script>
+      <script type="text/javascript">
+         $("#dateID").datebox({
+              required:true
+         });
+       </script>
+        
+  </body>
+</html>

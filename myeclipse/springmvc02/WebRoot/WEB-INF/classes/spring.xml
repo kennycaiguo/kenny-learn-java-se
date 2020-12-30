@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:p="http://www.springframework.org/schema/p"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"  
+     xmlns:tx="http://www.springframework.org/schema/tx" 
+     xmlns:mvc="http://www.springframework.org/schema/mvc"
+     
+     xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx  
+         http://www.springframework.org/schema/tx/spring-tx.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+         
+       
+<!--  <import resource="org/kenny/app2_01/spring-app2_01.xml"/> -->
+<!--  <import resource="org/kenny/app2_02/spring-app2_02.xml"/> -->
+<!--  <import resource="org/kenny/app2_03/spring-app2_03.xml"/> -->
+<!--  <import resource="org/kenny/app2_04/spring-app2_04.xml"/> -->
+<!--  <import resource="org/kenny/app2_05/spring-app2_05.xml"/> -->
+<!--  <import resource="org/kenny/app2_06/spring-app2_06.xml"/> -->
+<!--  <import resource="org/kenny/app2_07/spring-app2_07.xml"/> -->
+<!--  <import resource="org/kenny/app2_08/spring-app2_08.xml"/> -->
+<!--  <import resource="org/kenny/app2_09/spring-app2_09.xml"/> -->
+ <import resource="org/kenny/app2_10/spring-app2_10.xml"/>
+       
+</beans>
+

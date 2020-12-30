@@ -1,0 +1,5 @@
+package zmt.kenny.entity;
+
+public class Emp {
+
+}

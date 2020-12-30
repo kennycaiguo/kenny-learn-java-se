@@ -1,0 +1,35 @@
+package org.knny.dao;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+import org.kenny.entity.User;
+
+public class UserDao {
+   private static SessionFactory sf;
+   static{
+	   sf=(SessionFactory) new Configuration().configure().buildSessionFactory();
+   }
+   
+   @Test
+   public void testSave() throws Exception{
+	   User user=new User();
+	   Set<String> address=new HashSet<String>();
+	   address.add("13 main street ,Ohio ");
+	   address.add("1 main street ,Ohio ");
+	   address.add("52 king street ,texas ");
+	   user.setAddress(address);
+	   user.setUserName("Fanny");
+	   Session session=sf.openSession();
+	   Transaction ts=session.beginTransaction();
+	   session.save(user);
+	   ts.commit();
+	   session.close();
+	   
+   }
+}

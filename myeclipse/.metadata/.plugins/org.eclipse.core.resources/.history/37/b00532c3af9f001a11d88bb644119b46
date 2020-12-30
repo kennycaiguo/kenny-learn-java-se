@@ -1,0 +1,18 @@
+package cr.kenny.calloracle;
+
+import java.sql.*;
+
+import cr.kenny.util.JdbcUtils;
+
+public class CallOracleFunct {
+   public static void main(String[] args) throws Exception {
+	Connection connection=JdbcUtils.getConnection();
+	String sql=""; 
+	CallableStatement cStatement=connection.prepareCall(sql);
+	 
+	cStatement.execute();
+	 
+	cStatement.close();
+	connection.close();
+  }
+}

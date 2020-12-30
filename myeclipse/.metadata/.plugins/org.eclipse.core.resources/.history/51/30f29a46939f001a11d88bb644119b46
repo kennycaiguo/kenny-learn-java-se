@@ -1,0 +1,16 @@
+package zmt.kenny.action;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping(value="/emp")
+public class EmpAction {
+  //注册员工
+	
+	public String registerMethod() throws Exception{
+		
+		return "/jsp/success.jsp";
+		
+	}
+}

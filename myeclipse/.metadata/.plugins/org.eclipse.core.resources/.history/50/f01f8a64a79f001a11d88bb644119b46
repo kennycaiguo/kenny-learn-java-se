@@ -1,0 +1,7 @@
+package cr.kenny.calloracle;
+
+public class CallOracleProc {
+   public static void main(String[] args) {
+	
+  }
+}

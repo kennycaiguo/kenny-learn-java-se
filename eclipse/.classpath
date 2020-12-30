@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="anonymousObject/src"/>
+	<classpathentry kind="src" path="anyMax/src"/>
+	<classpathentry kind="src" path="anyMax2/src"/>
+	<classpathentry kind="src" path="arraytest/src"/>
+	<classpathentry kind="src" path="Class test/src"/>
+	<classpathentry kind="src" path="FileTest/src"/>
+	<classpathentry kind="src" path="Guitest/src"/>
+	<classpathentry kind="src" path="hello/src"/>
+	<classpathentry kind="src" path="lambdaTest/src"/>
+	<classpathentry kind="src" path="netedClasses/src"/>
+	<classpathentry kind="src" path="PrintArrayWithFormat/src"/>
+	<classpathentry kind="src" path="streamtest/src"/>
+	<classpathentry kind="src" path="test/src"/>
+	<classpathentry kind="src" path="whileTest/src"/>
+	<classpathentry kind="output" path="Class test/bin"/>
+</classpath>

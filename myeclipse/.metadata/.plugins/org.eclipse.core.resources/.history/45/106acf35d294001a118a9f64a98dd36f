@@ -1,0 +1,10 @@
+package china.kenny.app;
+
+import org.junit.Test;
+
+public class MyBatisDemo {
+  @Test
+  public void test1(){
+	  SqlSession sqlSession=MyBatisUtil
+  }
+}

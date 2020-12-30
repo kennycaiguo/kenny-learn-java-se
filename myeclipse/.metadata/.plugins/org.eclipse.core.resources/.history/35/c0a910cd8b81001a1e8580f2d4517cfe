@@ -1,0 +1,5 @@
+package my.kenny.entity;
+
+public class Animal {
+
+}

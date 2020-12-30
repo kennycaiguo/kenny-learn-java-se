@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>linkbutton demo</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- 导入css文件，没有顺序-->
+    <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+     <!-- 导入js文件，有顺序-->
+     <script type="text/javascript" src="../js/jquery.min.js"></script>
+     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+     <script type="text/javascript">
+      
+     </script>
+    
+  </head>
+  
+  <body>
+      
+   
+	  <div id="aa" class="esayui-panel" style="width:300px;height:200px;" style="padding:10px">   
+		    
+		<a id="btn_add" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加部门</a><p>  
+		<a id="btn_find" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询部门</a><p>    
+		<a id="btn_update" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改部门</a><p>     
+		<a id="btn_delete" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除部门</a><p>      
+	</div>  
+	<script type="text/javascript">
+         $("a").click(function(){
+             var content=$(this).text();
+             content=$.trim(content);
+             alert(content);
+         });
+     </script>
+</body>
+</html>

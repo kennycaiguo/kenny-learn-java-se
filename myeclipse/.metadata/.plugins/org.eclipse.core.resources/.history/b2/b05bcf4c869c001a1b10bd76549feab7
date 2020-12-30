@@ -1,0 +1,30 @@
+package com.kenny.service;
+
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import com.kenny.dao.EmpDao;
+import com.kenny.entity.Emp;
+import com.kenny.util.JdbcUtils;
+
+public class EmpService {
+	private EmpDao empDao;
+	
+    
+	public void setEmpDao(EmpDao empDao) {
+		this.empDao = empDao;
+	}
+
+
+	public void register(Emp emp) throws Exception{
+    	empDao.Add(emp);
+    }
+	
+	  public List<Emp> findAllEmps() throws Exception{
+	    	
+			return empDao.findAll();
+	    	
+	    }
+}

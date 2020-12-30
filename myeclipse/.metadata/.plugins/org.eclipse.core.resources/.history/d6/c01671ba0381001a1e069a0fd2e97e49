@@ -1,0 +1,196 @@
+package my.kenny.dao;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import my.kenny.entity.Project;
+import my.kenny.entity.Developer;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.mapping.Set;
+
+
+
+public class ProjectDeveloperDao{
+	
+	private static SessionFactory sf=null;
+    
+    static {
+  	  Configuration conf=new Configuration();
+  	  conf.configure();
+  	  sf=conf.buildSessionFactory();
+    }
+    
+    public Session getSession(){
+    	return sf.openSession();
+    }
+    
+    public void saveData(){
+    	//电商项目:曹吉+王春
+    	//oa项目：王春+老张
+    	
+    	Session s=sf.openSession();
+    	//创建项目对象
+    	Project pj_ds=new Project();
+    	pj_ds.setpName("电商项目");
+    	
+    	Project pj_oa=new Project();
+    	pj_oa.setpName("OA项目");
+    	//创建开发人员对象
+    	Developer d1=new Developer();
+    	d1.setdName("曹吉");
+    	
+    	Developer d2=new Developer();
+    	d2.setdName("王春");
+    	
+    	Developer d3=new Developer();
+    	d3.setdName("老张");
+    	//关联
+    	pj_ds.getDevelopers().add(d1);
+    	pj_ds.getDevelopers().add(d2);
+    	
+    	pj_oa.getDevelopers().add(d2);
+    	pj_oa.getDevelopers().add(d3);
+    	//保存
+    	
+    	Transaction ts=s.beginTransaction();
+    	s.save(d1);
+    	s.save(d2);
+    	s.save(d3);
+    	s.save(pj_ds);
+    	s.save(pj_oa);
+    	
+    	ts.commit();
+    	s.close();
+    	System.out.println("保存数据成功！！！");
+    }
+//    public void saveDept(Project dept){
+//    	Session session =sf.openSession();
+//		 Transaction tx=session.beginTransaction();
+//    	 
+//		 session.save(dept);
+//		tx.commit();
+//		 System.out.println("新增了一条记录");
+//		 session.close();
+//    }
+//	 
+//    public Project getDept(int num){
+//    	Session session =sf.openSession();
+//    	Transaction tx=session.beginTransaction();
+//    	Project d=new Project();
+//    	d=(Project) session.get(Project.class, num);
+//    	tx.commit();
+//    	//session.close();
+//    	
+//		return d;
+//    	
+//    }
+//    public void updateDeptAll(int num,Project newdept){
+//    	Session session =sf.openSession();
+//		 Transaction tx=session.beginTransaction();
+//   	     Project dept=new Project();
+//   	      dept=(Project) session.get(Project.class, num);
+//   	      dept.setDeptName(newdept.getDeptName());
+//   	      dept.setEmps(newdept.getEmps());
+//		session.update(dept);
+//		tx.commit();
+//		 System.out.println("更新了一条记录");
+//		 session.close();
+//    }
+//    
+//    public void deleteDept(Integer id){
+//		 Session session =sf.openSession();
+//		 Transaction tx=session.beginTransaction();
+//		 Project d=(Project) session.get(Project.class, id);
+//		 session.delete(d);
+//		 tx.commit();
+//		 session.close();
+//		 System.out.println("删除了一条数据");
+//	 }
+//    
+//    
+//	public void saveEmp(Developer emp,int num) {
+//		// TODO Auto-generated method stub
+//		
+//		 Session session =sf.openSession();
+//		 Project dept=(Project) session.get(Project.class,num);
+//		 Transaction tx=session.beginTransaction();
+//		 emp.setDept(dept);
+//		 session.save(emp);
+//		 tx.commit();
+//		 System.out.println("新增了一条记录");
+//		 session.close();
+//	}
+//
+//	public void updataEmp(int id,Developer newemp) {
+//		// TODO Auto-generated method stub
+//		Developer emp=new Developer();
+//		 
+//		Session session =sf.openSession();
+//		 Transaction tx=session.beginTransaction();
+//		 emp=(Developer) session.get(Developer.class, id);
+//		 emp.setEmpName(newemp.getEmpName());
+//		 emp.setSalary(newemp.getSalary());
+//		 emp.setDept(newemp.getDept());
+//		 session.update(emp);
+//		 tx.commit();
+//		 System.out.println("修改了一条记录");
+//		 session.close();
+//	}
+//
+//	public Developer findbyIdEmp(Serializable id) {
+//		// TODO Auto-generated method stub
+//		Developer e =new Developer();
+//		Session session =sf.openSession();
+//		 Transaction tx=session.beginTransaction();
+//		
+//		 e=(Developer) session.get(Developer.class, id);
+//		 //System.out.println(e);
+//		return e;
+//	}
+//
+//	public List<Developer> getAllEmp() {
+//		// TODO Auto-generated method stub
+//		 List<Developer> list=new ArrayList<Developer>();
+//		 //Employee e =new Employee();
+//			Session session =sf.openSession();
+//			 Transaction tx=session.beginTransaction();
+//			 String qrStr="from Employee";
+//		     Query qr=session.createQuery(qrStr);
+//		     list=qr.list();
+//		 
+//		return list;
+//	}
+//
+//	public List<Developer> getAllEmp(String empName) {
+//		// TODO Auto-generated method stub
+//		 List<Developer> list=new ArrayList<Developer>();
+//		 //Employee e =new Employee();
+//			Session session =sf.openSession();
+//			 Transaction tx=session.beginTransaction();
+//			 String qrStr="from Employee where empName= "+empName;
+//		     Query qr=session.createQuery(qrStr);
+//		     list=qr.list();
+//		 
+//		return list;
+//	}
+//
+//	 public void deleteEmp(Integer id){
+//		 Session session =sf.openSession();
+//		 Transaction tx=session.beginTransaction();
+//		 Developer e=(Developer) session.get(Developer.class, id);
+//		 session.delete(e);
+//		 tx.commit();
+//		 session.close();
+//		 System.out.println("删除了一条数据");
+//	 }
+
+}
+	
+

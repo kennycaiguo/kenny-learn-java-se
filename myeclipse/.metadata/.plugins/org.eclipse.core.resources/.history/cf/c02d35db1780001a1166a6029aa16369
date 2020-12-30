@@ -1,0 +1,61 @@
+package com.kenny.test;
+
+ 
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.kenny.daoImpl.EmployeeDao;
+import com.kenny.entity.Employee;
+
+public class EmployeeDaoImplTest {
+  
+	 @Test
+     public void testSave() {
+	 Employee e=new Employee();
+	  
+	 e.setEmpName("Paula fernandez");
+	  
+	 e.setSalary(3000);
+	 EmployeeDao ed=new EmployeeDao();
+	 ed.savebyHbn(e);
+}
+	 @Test
+	public void testUpdat() {
+		 Employee e=new Employee();
+		 e.setEmpId(1);
+		 e.setEmpName("Ricky Rojas");
+		 
+		 e.setSalary(3000);
+		 EmployeeDao ed=new EmployeeDao();
+		 ed.updata(e, 50);
+	}
+
+	 @Test
+	 public void testFindbyId(){
+		 Employee e=new Employee();
+		 Integer id=4;
+		 EmployeeDao ed=new EmployeeDao();
+		 e=ed.findbyId(4);
+		 System.out.println(e);
+	 }
+	 
+	 @Test
+	 public void testGetAll(){
+		 List<Employee> list=new ArrayList<Employee>();
+		 EmployeeDao ed=new EmployeeDao();
+		 list=ed.getAll();
+		 for(Employee e:list){
+			 System.out.println(e);
+		 }
+	 }
+	 
+	 @Test
+	 public void testDelete(){
+		 Integer i=51;
+		 EmployeeDao ed=new EmployeeDao();
+		 ed.delete(i);
+	 }
+}

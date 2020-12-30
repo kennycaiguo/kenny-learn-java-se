@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:p="http://www.springframework.org/schema/p"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"  
+     xmlns:tx="http://www.springframework.org/schema/tx" 
+     xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx  
+         http://www.springframework.org/schema/tx/spring-tx.xsd">
+         
+         <!-- 这个是Spring总配置文件，在这里引入其他配置文件 -->
+          
+          <!-- 配置c3p0连接池 -->
+          <bean id="comboPooledDataSourceID" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+               <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+               <property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>
+               <property name="user" value="scott"/>
+               <property name="password" value="tiger"/>
+                
+          </bean>
+          <!-- 配置SqlSessionfactotyBean ,替代MyBatisUtil工具类-->
+          <bean id="sqlSessionFactoryBeanID" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <property name="configLocation" value="classpath:mybatis.xml"/>
+            <property name="dataSource" ref="comboPooledDataSourceID"/>
+          </bean>
+       
+       <!-- 配置mybatis事务管理器,使用jdbc事务管理器-->
+       <bean id="dataSourceTransactionManagerID" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+          <property name="dataSource" ref="comboPooledDataSourceID"></property>
+       </bean>
+       <!-- 配置事务通知 -->
+       <tx:advice id="tx" transaction-manager="dataSourceTransactionManagerID">
+          <tx:attributes>
+             <tx:method name="add*" propagation="REQUIRED"/>
+             <tx:method name="update*" propagation="REQUIRED"/>
+             <tx:method name="delete*" propagation="REQUIRED"/>
+             <tx:method name="*" propagation="SUPPORTS"/>
+          </tx:attributes>
+       </tx:advice>
+       <!-- 配置事务切面，指定那些类需要事务-->
+       <aop:config>
+<!--            <aop:pointcut expression="execution(* com.xyz.myapp.service.*.*(..))" id="pointcut"/> -->
+           <aop:pointcut expression="execution(* zmt.kenny.dao.*.*(..))" id="pointcut"/>
+           <aop:advisor advice-ref="tx" pointcut-ref="pointcut"/>
+       </aop:config>
+       
+       <!-- 注册EmpDao -->
+       <bean id="empDao" class="zmt.kenny.dao.EmpDao">
+           <property name="sqlSessionFactory" ref="sqlSessionFactoryBeanID"/>
+       </bean>
+         <!-- 注册EmpService -->
+         <bean id="empService" class="zmt.kenny.service.EmpService">
+           <property name="empDao" ref="empDao"></property>
+         </bean>
+           <!-- 注册EmpAction -->
+          <context:component-scan base-package="zmt.kenny.action" />
+          <context:annotation-config />
+</beans>

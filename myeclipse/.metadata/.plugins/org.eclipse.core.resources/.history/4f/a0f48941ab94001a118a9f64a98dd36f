@@ -1,0 +1,18 @@
+package china.kenny.entity;
+
+public class Student {
+   private Integer id;
+   private String name;
+   private double sal;
+   
+   public Student(){}
+
+public Student(Integer id, String name, double sal) {
+	 
+	this.id = id;
+	this.name = name;
+	this.sal = sal;
+}
+   
+   
+}

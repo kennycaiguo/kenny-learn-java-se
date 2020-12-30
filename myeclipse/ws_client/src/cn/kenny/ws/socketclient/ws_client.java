@@ -1,0 +1,55 @@
+package cn.kenny.ws.socketclient;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+ 
+
+ 
+ 
+/**
+ * socket客户端
+ * @author Administrator
+ *
+ */
+
+public class ws_client {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 * @throws UnknownHostException 
+	 */
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		
+		 //获取用户输入的数据
+		Scanner input=new Scanner(System.in);
+		System.out.println("输入一个要转换为大写的字符串");
+		String inputString=input.nextLine();
+		//回显
+		System.out.println("用户输人的数据是："+inputString);
+		//创建scocket
+		Socket socket=new Socket("127.0.0.1",6666);
+		 //获取输出流
+		OutputStream outputStream=socket.getOutputStream();
+		//输出
+		outputStream.write(inputString.getBytes("UTF-8"));
+		//获取服务端返回的数据
+		
+		InputStream inputStream=socket.getInputStream();
+		byte[] buf=new byte[1024];
+		int len=-1;
+		len=inputStream.read(buf);
+		String result=new String(buf, 0, len);
+		System.out.println("转换结果："+result);
+		inputStream.close();
+		outputStream.close();
+		socket.close();
+	}
+
+	
+}

@@ -1,0 +1,14 @@
+package zmt.kenny.test;
+
+import org.junit.Test;
+
+import zmt.kenny.dao.EmpDao;
+import zmt.kenny.entity.Emp;
+
+public class TestEmpDao {
+   @Test
+   public void testAdd() throws Exception{
+	   EmpDao empDao=new EmpDao();
+	   empDao.add(new Emp(1,"盗笔",1000D,"男"));
+   }
+}

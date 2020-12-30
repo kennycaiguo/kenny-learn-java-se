@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;dom4jtest&apos; to &apos;dom4j_read_xml&apos;&#x0D;&#x0A;- Original element: &apos;dom4jtest&apos;&#x0D;&#x0A;- Renamed element: &apos;dom4jtest&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;dom4jtest&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=dom4jtest" name="dom4j_read_xml" references="true" stamp="1566599162256" version="1.0"/>
+</session>

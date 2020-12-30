@@ -1,0 +1,16 @@
+
+
+import javax.jws.WebService;
+
+@WebService(endpointInterface = "cn.kenny.ws.job.JobService")//一个类可以实现多个接口，所以必须指明是哪个接口发布webservice的
+public class JobServiceImpl implements JobService {
+
+	public String getJob() {
+	      return "javaEE研发工程师|android研发工程师|.net架构师|前端工程师|测试工程师|运维人员";
+    }
+	
+	public void say() {
+		System.out.println("Hello!!!how are you!!!");
+	}
+
+}

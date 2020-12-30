@@ -1,0 +1,60 @@
+package my.kenny.test;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import my.kenny.dao.CarDao;
+import my.kenny.entity.Car;
+import my.kenny.entity.Wheel;
+
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+
+
+public class TestApp {
+   
+	
+	@Test
+	public void testSaveCar(){
+		
+		 Wheel w=new Wheel();
+		 w.setSize(5);
+		 w.setCount(4);
+		 Car c=new Car();
+		  c.setName("Toyota");
+		  c.setWheel(w);
+		 CarDao cd=new CarDao();
+		 cd.saveCar(c);
+	}
+	
+	@Test
+	public void testGetCar(){
+		
+		int num=2;
+		CarDao ed=new CarDao();
+		 
+		//Set<Employee> set=(Set<Employee>) dept.getEmps();
+		System.out.println("");
+		 
+	}
+	
+	@Test
+	public void testUpdateCar(){
+		 
+	}
+	 
+	@Test
+	public void testDelete(){
+		int num=7;
+		CarDao dao=new CarDao();
+		dao.deleteDept(num);//被外键引用的表必须要将inverse属性设置为false，也就是有控制器，才能删除，否则报错
+	}
+}

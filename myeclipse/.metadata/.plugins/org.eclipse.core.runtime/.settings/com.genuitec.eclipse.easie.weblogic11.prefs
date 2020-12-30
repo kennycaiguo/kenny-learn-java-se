@@ -1,0 +1,13 @@
+ADMIN_PASSWORD=kenny1975
+BEA_HOME=D\:\\Oracle\\Middleware
+DOMAIN_DIRECTORY=D\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain
+INTEGRATION_DIRECTORY=D\:\\Oracle\\Middleware\\wlserver_10.3\\integration
+JDK_HOME=d\:\\Programs\\MyEclipse\\Common\\binary\\com.sun.java.jdk.win32.x86_64_1.6.0.013
+LIBRARY_PATH="d\:\\Programs\\MyEclipse\\Common\\binary\\com.sun.java.jdk.win32.x86_64_1.6.0.013\\bin;D\:\\Oracle\\Middleware\\wlserver_10.3\\bin;D\:\\Oracle\\Middleware\\wlserver_10.3\\server\\bin"
+POLICY_FILE=D\:\\Oracle\\Middleware\\wlserver_10.3\\server\\lib\\weblogic.policy
+ROOT_DIRECTORY=D\:\\Oracle\\Middleware\\wlserver_10.3
+RUNTIME_ROOT_DIRECTORY=D\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain
+SERVER_DIRECTORY=D\:\\Oracle\\Middleware\\wlserver_10.3\\server
+SERVER_ENABLEMENT=true
+STARTUP_DIR=D\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain
+eclipse.preferences.version=1

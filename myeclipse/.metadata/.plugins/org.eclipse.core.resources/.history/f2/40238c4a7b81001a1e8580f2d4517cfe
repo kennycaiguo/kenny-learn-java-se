@@ -1,0 +1,52 @@
+package org.knny.dao;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+import org.kenny.entity.IDCard;
+import org.kenny.entity.User;
+
+public class UserDao {
+   private static SessionFactory sf;
+   static{
+	   sf=(SessionFactory) new Configuration().configure().buildSessionFactory();
+   }
+   
+   @Test
+   public void testSave() throws Exception{
+	   User user=new User();
+	    user.setUserName("banny");
+	   
+	   IDCard id=new IDCard();
+	   id.setCardNum("441001900XXX");
+	   id.setPlace("12main street,ocho rios");
+	   id.setUser(user);
+	   Session session=sf.openSession();
+	   Transaction ts=session.beginTransaction();
+	   session.save(id);
+	   ts.commit();
+	   session.close();
+	   
+   }
+   
+   @Test
+   public void testGet(){
+	   User user=new User();
+	   Session session=sf.openSession();
+	   Transaction ts=session.beginTransaction();
+	   user=(User) session.get(User.class, 1);
+	   System.out.println(user);
+	   ts.commit();
+	   session.close();
+	   
+   }
+}

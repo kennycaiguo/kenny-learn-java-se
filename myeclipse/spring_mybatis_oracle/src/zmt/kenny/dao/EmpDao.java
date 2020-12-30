@@ -1,0 +1,21 @@
+package zmt.kenny.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import zmt.kenny.entity.Emp;
+
+public class EmpDao {
+	
+	 private SqlSessionFactory sqlSessionFactory;
+	 public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		this.sqlSessionFactory = sqlSessionFactory;
+	}
+	//增加员工
+	public void add(Emp emp) throws Exception {
+		 SqlSession session = sqlSessionFactory.openSession();
+		 session.insert("empNameSpace.add", emp);
+		 //int i=1/0;
+		session.close();
+	}
+
+}

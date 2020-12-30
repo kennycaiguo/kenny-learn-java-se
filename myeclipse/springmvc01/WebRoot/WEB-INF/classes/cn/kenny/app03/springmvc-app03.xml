@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:p="http://www.springframework.org/schema/p"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"  
+     xmlns:tx="http://www.springframework.org/schema/tx" 
+     xmlns:mvc="http://www.springframework.org/schema/mvc"
+     
+     xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx  
+         http://www.springframework.org/schema/tx/spring-tx.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+         
+         <!-- 配置action 方法一-->
+<!--         <bean name="/add.action" class="cn.kenny.app03.UserAction"></bean> -->
+<!--         <bean name="/update.action" class="cn.kenny.app03.UserAction"></bean> -->
+<!--         <bean name="/delete.action" class="cn.kenny.app03.UserAction"></bean> -->
+<!--         <bean name="/find.action" class="cn.kenny.app03.UserAction"></bean> -->
+        <!-- 配置映射器 -->
+<!--         <bean  class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean> -->
+        
+        
+        <!-- 配置action 方法二-->
+            <bean id="userActionID" class="cn.kenny.app03.UserAction"></bean>
+            <!-- SimpleUrlHandlerMapping映射器  ，适合于将多个请求映射到一个action-->
+            <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+               <property name="mappings">
+                 <props>
+                     <!-- key表示请求的路径 -->
+                     <prop key="/add.action">userActionID</prop>
+                     <prop key="/update.action">userActionID</prop>
+                     <prop key="/delete.action">userActionID</prop>
+                     <prop key="/find.action">userActionID</prop>
+                 </props>
+               </property>
+            </bean>
+        <!-- 配置适配器 (这里可省)-->
+        
+        <!-- 配置视图解析器 -->
+        <!-- 如果action这使用了逻辑名称，必须配置视图解析器 -->
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+              <!-- 路径前缀 -->
+           <property name="prefix" value="/jsp/"></property>
+           	  <!-- 路径后缀 -->
+           <property name="suffix" value=".jsp"></property> <!-- prifix+viewname+suffix=真实路径（自动拼接） -->
+           
+        </bean>
+        
+        
+         
+       
+</beans>
+

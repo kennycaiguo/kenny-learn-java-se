@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="courseNs">
+  <!-- resultMap:实体类与表的映射
+      type：实体类的全路径
+      id：为实体类与表的映射取一个唯一的编号
+   -->
+  <resultMap type="cr.kenny.many2many.Course" id="courseMap"><!-- 使用类型别名，在mybatis.xml这设置 -->
+  <!-- id:映射主键属性
+       property：实体类属性名
+       column：数据库字段名
+       result：映射非主键属性
+   -->
+    <id property="id" column="cid" />
+	<result property="name" column="cname" />
+	 
+  </resultMap>
+  
+  <select id="findAllByName" parameterType="string" resultMap="courseMap">
+    select c.cid,c.cname
+    from students s inner join middles m
+    on s.sid=m.msid inner join courses c
+    on m.mcid=c.cid and s.sname=#{name}
+  </select>
+</mapper>	

@@ -1,0 +1,99 @@
+package com.kenny.dao;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
+import com.kenny.entity.Employee;
+
+public class EmployeeDao{
+	private static SessionFactory sf=null;
+    
+    static {
+  	  Configuration conf=new Configuration();
+  	  conf.configure();
+  	  sf=conf.buildSessionFactory();
+    }
+    
+	public EmployeeDao() {
+		// TODO Auto-generated constructor stub
+	}
+   
+	public void savebyHbn(Employee emp) {
+		// TODO Auto-generated method stub
+		 Session session =sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		 session.save(emp);
+		 tx.commit();
+		 System.out.println("新增了一条记录");
+		 session.close();
+	}
+
+	public void updata(Employee emp,int id) {
+		// TODO Auto-generated method stub
+		emp.setEmpId(id);
+		Session session =sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		 session.update(emp);
+		 tx.commit();
+		 System.out.println("修改了一条记录");
+		 session.close();
+	}
+
+	public Employee findbyId(Serializable id) {
+		// TODO Auto-generated method stub
+		Employee e =new Employee();
+		Session session =sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		
+		 e=(Employee) session.get(Employee.class, id);
+		 //System.out.println(e);
+		return e;
+	}
+
+	public List<Employee> getAll() {
+		// TODO Auto-generated method stub
+		 List<Employee> list=new ArrayList<Employee>();
+		 //Employee e =new Employee();
+			Session session =sf.openSession();
+			 Transaction tx=session.beginTransaction();
+			 String qrStr="from Employee ";
+		     Query qr=session.createQuery(qrStr);
+		     list=qr.list();
+		 
+		return list;
+	}
+
+	public List<Employee> getAll(String empName) {
+		// TODO Auto-generated method stub
+		 List<Employee> list=new ArrayList<Employee>();
+		 //Employee e =new Employee();
+			Session session =sf.openSession();
+			 Transaction tx=session.beginTransaction();
+			 String qrStr="from Employee where empName= "+empName;
+		     Query qr=session.createQuery(qrStr);
+		     list=qr.list();
+		 
+		return list;
+	}
+
+	 public void delete(Integer id){
+		 Session session =sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		 Employee e=(Employee) session.get(Employee.class, id);
+		 session.delete(e);
+		 tx.commit();
+		 session.close();
+		 System.out.println("删除了一条数据");
+	 }
+
+}
+	
+

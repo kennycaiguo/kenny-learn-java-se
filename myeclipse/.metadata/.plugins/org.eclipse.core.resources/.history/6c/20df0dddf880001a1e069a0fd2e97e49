@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="my.kenny.entity">
+	
+	<class name="Developer" table="t_developer">
+		<!-- 主键映射-->
+		<id name="d_Id" >
+			<generator class="native"/>
+		</id>
+        <!-- 非主键映射-->
+		<property name="dName" length="20" type="string"></property>
+		 
+		<!-- 多对一映射 -->
+         <set name="projects" table="t_relation">
+            <key column="pId"></key>
+            <many-to-many class="Project" ></many-to-many>
+         </set>
+	</class>
+
+	 
+
+</hibernate-mapping>

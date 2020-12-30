@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=emp_struts_spring/D:\/Software\/Userlib\/Spring-struts2\/struts2-core-2.3.4.1.jar&lt;org.apache.struts2.dispatcher.ng.filter(StrutsPrepareAndExecuteFilter.class[StrutsPrepareAndExecuteFilter" modifiers="33" timestamp="1571866986556"/>
+<typeInfo handle="=emp_struts_spring/D:\/Software\/Userlib\/Spring-struts2\/spring-web-4.0.5.RELEASE.jar&lt;org.springframework.web.context(ContextLoaderListener.class[ContextLoaderListener" modifiers="33" timestamp="1400538050000"/>
+<typeInfo handle="=springmvc01/D:\/Workspaces\/MyEclipse 10\/springmvc01\/WebRoot\/WEB-INF\/lib\/spring-webmvc-portlet-3.2.0.RELEASE.jar&lt;org.springframework.web.portlet.mvc(SimpleControllerHandlerAdapter.class[SimpleControllerHandlerAdapter" modifiers="33" timestamp="1589897926776"/>
+<typeInfo handle="=springmvc01/D:\/Workspaces\/MyEclipse 10\/springmvc01\/WebRoot\/WEB-INF\/lib\/spring-web-3.2.0.RELEASE.jar&lt;org.springframework.web.bind(ServletRequestDataBinder.class[ServletRequestDataBinder" modifiers="33" timestamp="1589897926771"/>
+<typeInfo handle="=emp/D:\/Software\/Userlib\/spring 3.0.5\/spring-mvc 3.0.5\(已经包含core,aop,msqlconnector,oracledriver,c3p0)\/org.springframework.web.servlet-3.0.5.RELEASE.jar&lt;org.springframework.web.servlet(DispatcherServlet.class[DispatcherServlet" modifiers="33" timestamp="1589300519328"/>
+<typeInfo handle="=emp_struts_spring/D:\/Software\/Userlib\/Spring-struts2\/spring-web-4.0.5.RELEASE.jar&lt;org.springframework.web.filter(CharacterEncodingFilter.class[CharacterEncodingFilter" modifiers="33" timestamp="1400538050000"/>
+</typeInfoHistroy>

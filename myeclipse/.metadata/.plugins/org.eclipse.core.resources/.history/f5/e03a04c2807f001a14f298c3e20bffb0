@@ -1,0 +1,11 @@
+package kenny;
+
+import org.junit.Test;
+
+public class hellotest {
+  
+	@Test
+	public void testHello(){
+		System.out.println("hello!!!");
+	}
+}

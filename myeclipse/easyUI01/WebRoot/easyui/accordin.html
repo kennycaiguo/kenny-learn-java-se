@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyeasyuiHtml.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- 导入css文件，没有顺序-->
+    <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+     <!-- 导入js文件，有顺序-->
+     <script type="text/javascript" src="../js/jquery.min.js"></script>
+     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+     <script type="text/javascript">
+       $(function(){
+            $('#aa').accordion('add', {
+	         title: 'Title5',
+	         content: '武汉',
+	         selected: false
+	         });
+           window.setTimeout(function(){
+	            $('#aa').accordion("remove","Title5");
+	            alert("移除了一个面板！");
+	            //选中第一个面板
+	             //$('#aa').accordion("select",0);
+	         },3000);
+     });
+     </script>
+  </head>
+  
+  <body>
+	  <div id="aa" class="easyui-accordion" style="width:200px;height:300px;">   
+		    <div title="Title1" data-options="iconCls:'icon-save'" style="overflow:auto;padding:10px;">   
+		        <h3 style="color:#0099FF;">Accordion for jQuery</h3>   
+		        <p>Accordion is a part of easyui framework for jQuery.     
+		        It lets you define your accordion component on web page more easily.</p>   
+		    </div>   
+			    <div title="Title2" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
+			        content2    
+			    </div>   
+			    <div title="Title3">   
+			        content3    
+			    </div>   
+	</div>  
+
+</html>

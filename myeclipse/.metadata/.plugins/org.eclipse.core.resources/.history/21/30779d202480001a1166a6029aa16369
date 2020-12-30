@@ -1,0 +1,53 @@
+package com.kenny.test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.Test;
+
+import com.kenny.dao.EmployeeDao;
+import com.kenny.entity.Dept;
+import com.kenny.entity.Employee;
+
+public class TestApp {
+  
+	@Test
+	public void saveDept(){
+		//创建部门对象
+		Dept dept=new Dept();
+		dept.setDeptName("人事部");
+		//创建几个员工对象
+		Employee e1=new Employee();
+		e1.setEmpName("Jack");
+		e1.setSalary(3000);
+		e1.setDept(dept);
+		Employee e2=new Employee();
+		e2.setEmpName("John");
+		e2.setSalary(3500);
+		e2.setDept(dept);
+		
+		Set<Employee> emps=new HashSet<Employee>();
+		dept.getEmps().add(e1);
+		dept.getEmps().add(e2);
+		//dept.setEmps(emps);
+		
+		EmployeeDao eld=new EmployeeDao();
+		eld.saveDept(dept);
+		
+	}
+	
+	@Test
+	public void testSaveEmp(Employee emp){
+		Employee e1=new Employee();
+		e1.setEmpName("Jack");
+		e1.setSalary(3000);
+		//e1.setDept(1);
+		EmployeeDao eld=new EmployeeDao();
+		eld.saveEmp(emp);
+		
+	}
+	public static void main(String[] args) {
+		new TestApp().saveDept();
+	}
+	
+}

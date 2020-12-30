@@ -1,0 +1,13 @@
+package dom4j_write_xml;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.junit.Test;
+
+public class CreateXml {
+   @Test
+   public void Dom4jCreateXml() {
+	   Document doc = DocumentHelper.createDocument();
+	   
+   }
+}

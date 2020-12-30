@@ -1,0 +1,5 @@
+package com.kenny.entity;
+
+public class Dept {
+
+}

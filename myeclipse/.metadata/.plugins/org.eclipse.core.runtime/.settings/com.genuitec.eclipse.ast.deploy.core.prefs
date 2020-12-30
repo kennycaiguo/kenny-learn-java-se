@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+tomcat7Server.spring_mybatis_oracle.IEARProjectName=
+tomcat7Server.spring_mybatis_oracle.altContextRoot=
+tomcat7Server.spring_mybatis_oracle.contextRoot=/spring_mybatis_oracle
+tomcat7Server.spring_mybatis_oracle.deployIsOverProject=false
+tomcat7Server.spring_mybatis_oracle.deploymentPath=D\:\\Software\\tomcat-7.0.64\\webapps\\spring_mybatis_oracle
+tomcat7Server.spring_mybatis_oracle.isDeployed=true
+tomcat7Server.spring_mybatis_oracle.isExploded=true
+tomcat7Server.spring_mybatis_oracle.isUptoDate=true
+tomcat7Server.spring_mybatis_oracle.noFileCopy=false
+tomcat7Server.spring_mybatis_oracle.shouldBackup=false
+tomcat7Server.spring_mybatis_oracle.shouldOverwrite=false
+tomcat7Server.spring_mybatis_oracle.type=WebDeployment

@@ -1,0 +1,132 @@
+package my.kenny.test;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import my.kenny.dao.ProjectDeveloperDao;
+import my.kenny.entity.Project;
+import my.kenny.entity.Developer;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+
+
+public class TestApp {
+  
+//	@Test
+//	public void saveDept(){
+//		//创建部门对象
+//		Project dept=new Project();
+//		dept.setDeptName("销售部");
+//		//创建几个员工对象
+//		Developer e1=new Developer();
+//		e1.setEmpName("fretty");
+//		e1.setSalary(4000);
+//		e1.setDept(dept);
+//		
+//		Developer e2=new Developer();
+//		e2.setEmpName("brook");
+//		e2.setSalary(3500);
+//		e2.setDept(dept);
+//		
+//		Set<Developer> emps=new HashSet<Developer>();
+//		emps.add(e1);
+//		emps.add(e2);
+//		dept.setEmps(emps);
+//		 
+//     	ProjectDeveloperDao eld=new ProjectDeveloperDao();//方法一，调用dao类
+//     	eld.saveEmp(e1,dept.getDeptId());
+//     	eld.saveEmp(e2,dept.getDeptId());   //尽量不要使用级联操作，先保存Employee对象
+//     	eld.saveDept(dept); //，再保存Dept对象
+////===============================================================================================//
+//     	//dept.getEmps().add(e1);  //方法二，直接上代码
+//		//dept.getEmps().add(e2);
+//		//dept.setEmps(emps);
+//		
+//		 
+//		
+//		 
+////		Configuration conf=new Configuration();
+////		conf.configure();
+////		SessionFactory sf=conf.buildSessionFactory();
+////		Session session =sf.openSession();
+////		Dept dept=new Dept();
+////		dept.setDeptName("研发部");
+////		//创建几个员工对象
+////		Employee e1=new Employee();
+////		e1.setEmpName("randlo");
+////		e1.setSalary(3000);
+////		e1.setDept(dept);
+////		Employee e2=new Employee();
+////		e2.setEmpName("margret");
+////		e2.setSalary(3500);
+////		e2.setDept(dept);
+//		
+////		Transaction ts=session.beginTransaction();
+////		
+////		//Set<Employee> emps=new HashSet<Employee>();
+////		dept.getEmps().add(e1);
+////		dept.getEmps().add(e2);
+//////		dept.setEmps(emps);
+////		session.save(dept);
+////		ts.commit();
+////		session.close();
+//		
+//	}
+//	
+//	@Test
+//	public void testSaveEmp(){
+//		Developer e1=new Developer();
+//		int num=2;
+//		e1.setEmpName("Benny");
+//		e1.setSalary(2000);
+//		
+//		ProjectDeveloperDao eld=new ProjectDeveloperDao();
+//		eld.saveEmp(e1,num);
+//		
+//	}
+//	
+//	@Test
+//	public void testGetDept(){
+//		
+//		int num=2;
+//		ProjectDeveloperDao ed=new ProjectDeveloperDao();
+//		Project dept=ed.getDept(num);
+//		//Set<Employee> set=(Set<Employee>) dept.getEmps();
+//		System.out.println(dept);
+//		 
+//	}
+//	
+//	@Test
+//	public void testUpdateDeptsameWorker(){
+//		Project newdept=new Project();
+//		ProjectDeveloperDao eld=new ProjectDeveloperDao();
+//		Session s=eld.getSession();
+//		int num=2;
+//	    Query q =s.createQuery("from Employee where dept_id="+num);
+//		List<Developer> list = q.list();
+//		Set<Developer> set=new HashSet<Developer>();
+//		for(Developer e:list){
+//			set.add(e);
+//		}
+//		Developer e1=eld.findbyIdEmp(num);
+//		newdept.setDeptName("财政部");
+//		newdept.setEmps(set);
+//		eld.updateDeptAll(num, newdept);
+//		
+//	}
+//	 
+//	@Test
+//	public void testDelete(){
+//		int num=7;
+//		ProjectDeveloperDao dao=new ProjectDeveloperDao();
+//		dao.deleteDept(num);//被外键引用的表必须要将inverse属性设置为false，也就是有控制器，才能删除，否则报错
+//	}
+}

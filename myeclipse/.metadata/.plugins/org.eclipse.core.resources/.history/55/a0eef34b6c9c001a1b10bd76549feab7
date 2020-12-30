@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sprmvc+easyui">
+        <wb-resource deploy-path="/" source-path="/WebRoot"/>
+        <property name="context-root" value="/sprmvc+easyui"/>
+        <property name="java-output-path" value="/sprmvc+easyui/WebRoot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

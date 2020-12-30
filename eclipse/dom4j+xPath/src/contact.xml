@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contactList>
+<contact id="001">
+<name>张靓颖</name>
+<age>26</age>
+<phone>13532619767</phone>
+<email>sodagenwong@gmail.com</email>
+<qq>1279995329</qq>
+</contact>
+<contact id="002">
+<name>张柏芝</name>
+<age>32</age>
+<phone>13532619857</phone>
+<email>agirldating@gmail.com</email>
+<qq>1286665426</qq>
+</contact>
+</contactList>

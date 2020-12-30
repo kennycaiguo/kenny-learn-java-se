@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;hellopython&apos;" deleteContents="true" description="Delete resource &apos;hellopython&apos;" element1="/hellopython" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1558884737824"/>
+</session>

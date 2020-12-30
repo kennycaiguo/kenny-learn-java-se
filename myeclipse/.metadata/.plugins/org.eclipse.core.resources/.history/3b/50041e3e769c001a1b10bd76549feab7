@@ -1,0 +1,23 @@
+package com.kenny.dao;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import org.apache.commons.dbutils.QueryRunner;
+
+import com.kenny.entity.Emp;
+import com.kenny.util.JdbcUtils;
+ 
+public class EmpDao {
+	//����Ա��
+    public void Add(Emp emp) throws Exception{
+    	QueryRunner qr=JdbcUtils.getQueryRunner();
+    	String sql="insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(?,?,?,?,?,?,?,?)";
+    	 
+        DateFormat df=new SimpleDateFormat("dd-M��-yy");
+         
+    	Object[] params={emp.getEmpno(),emp.getEname(),emp.getJob(),df.format(emp.getHiredate()),emp.getSal()
+,emp.getComm(),emp.getEmpno()};
+    	qr.update(sql,params);
+    }
+}

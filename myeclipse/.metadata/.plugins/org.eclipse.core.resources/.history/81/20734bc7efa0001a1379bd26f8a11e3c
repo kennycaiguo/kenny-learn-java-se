@@ -1,0 +1,5 @@
+package cn.kenny.ws.model;
+
+public class Phone {
+
+}

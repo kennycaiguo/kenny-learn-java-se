@@ -1,0 +1,27 @@
+package com.kenny.test;
+
+ 
+
+import org.junit.Test;
+
+import com.kenny.daoImpl.EmployeeDao;
+import com.kenny.entity.Employee;
+
+public class EmployeeDaoImplTest {
+  
+	 @Test
+     public static void testAdd() {
+	 Employee e=new Employee();
+	 e.setEmpdepId(1);
+	 e.setEmpName("Paula fernandez");
+	 e.setEmpGender("female");
+	 e.setEmpSalary(3000);
+	 EmployeeDao ed=new EmployeeDao();
+	 ed.savebyHbn(e);
+}
+	 @Test
+	public static void testUpdatedemo() {
+		System.out.println("update");
+	}
+
+}

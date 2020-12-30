@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Messager（消息窗口）</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>  
+        <input id="btn1" type="button" value="警告框" /> <p/>  
+        <input id="btn2" type="button" value="确认框" /> <p/>   
+        <input id="btn3" type="button" value="显示框" /> <p/>   
+        <input id="btn4" type="button" value="输入框" />  <p/>  
+        <div id="win" style="width:500px;height:400px"></div>
+      
+        <script type="text/javascript">
+           $(":button").click(function(){
+               var tip=$(this).val();
+               tip=$.trim(tip);
+               if(tip=="警告框"){
+	              $.messager.alert('警告','警告消息','warning',function(){
+	                  alert("关闭！");
+	              });   
+               }else if(tip=="确认框"){
+                      		$.messager.confirm('确认','您确认想要删除记录吗？',function(r){    
+							    if (r){    
+							        alert('确认删除');    
+							    } 
+							    
+		         });  
+					  
+               } else if(tip=="显示框"){
+                					 $.messager.show({
+										title:'我的消息',
+										msg:'消息将在4秒后关闭。',
+										showType:'show',
+										style:{
+											right:'',
+											top:document.body.scrollTop+document.documentElement.scrollTop,
+											bottom:''
+									}
+									
+				});
+									 
+              }else if(tip=="输入框" ){
+                					 $.messager.prompt('月薪要求', '请输入你期望的月薪：', function(sal){
+										if (sal==undefined){
+											alert('请输入期望的月薪');
+										}else{
+										if(sal<6000){
+										  alert("你太谦虚了！");
+											}else if(sal<7000){
+											  alert("你加点油！");
+											}else{
+											   alert("很好！");
+											}
+								}
+										
+							});
+             }
+              
+           });
+           
+           
+        </script>
+<!--         <script type="text/javascript"> -->
+<!--            $("#btn1").click(function(){ -->
+<!--               $.messager.alert('警告','警告消息');    -->
+              
+<!--            }); -->
+           
+<!--            $("#btn2").click(function(){ -->
+<!-- 					                $.messager.confirm('确认','您确认想要删除记录吗？',function(r){     -->
+<!-- 					    if (r){     -->
+<!-- 					        alert('确认删除');     -->
+<!-- 					    }     -->
+<!-- 					});   -->
+					
+<!--            }); -->
+<!--            $("#btn3").click(function(){ -->
+<!--                 $.messager.show({ -->
+<!-- 									title:'我的消息', -->
+<!-- 									msg:'消息将在4秒后关闭。', -->
+<!-- 									showType:'show', -->
+<!-- 									style:{ -->
+<!-- 										right:'', -->
+<!-- 										top:document.body.scrollTop+document.documentElement.scrollTop, -->
+<!-- 										bottom:'' -->
+<!-- 									} -->
+<!-- 								}); -->
+                
+<!--            }); -->
+<!--            $("#btn4").click(function(){ -->
+<!-- 									    $.messager.prompt('提示信息', '请输入你的姓名：', function(r){ -->
+<!-- 										if (r){ -->
+<!-- 											alert('你的姓名是：' + r); -->
+<!-- 										} -->
+<!-- 									}); -->
+
+                
+<!--            }); -->
+<!--         </script> -->
+  </body>
+</html>

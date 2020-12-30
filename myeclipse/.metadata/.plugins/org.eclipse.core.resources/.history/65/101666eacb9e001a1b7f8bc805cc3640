@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="gradens">
+  <!-- resultMap:实体类与表的映射
+      type：实体类的全路径
+      id：为实体类与表的映射取一个唯一的编号
+   -->
+  <resultMap type="cr.kenny.one2many.Grade" id="gradeMap"><!-- 使用类型别名，在mybatis.xml这设置 -->
+  <!-- id:映射主键属性
+       property：实体类属性名
+       column：数据库字段名
+       result：映射非主键属性
+   -->
+    <id property="id" column="gid" />
+	<result property="name" column="gname" />
+	 
+  </resultMap>
+  <!-- insert:表示要一个插入sql语句
+     id属性：为插入操作取一个唯一的名字
+     parameterType：dao的方法中的参数，如果是类的话，必须是全路径,如果方法没有参数，可以去掉这个属性
+   -->
+    <select id="findGradeByStuName" parameterType="string" resultMap="gradeMap">
+       select s.sname 
+       from students s inner join grades g
+       on s.sgid=g.gid and s.sname=#{name}
+    </select>
+</mapper>	

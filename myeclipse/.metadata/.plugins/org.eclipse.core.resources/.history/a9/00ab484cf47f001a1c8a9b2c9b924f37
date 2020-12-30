@@ -1,0 +1,5 @@
+package org.knny.dao;
+
+public class UserDao {
+
+}

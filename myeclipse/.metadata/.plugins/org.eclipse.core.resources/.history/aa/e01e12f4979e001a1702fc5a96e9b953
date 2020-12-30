@@ -1,0 +1,5 @@
+package cr.kenny.one2many;
+
+public class Grade {
+
+}

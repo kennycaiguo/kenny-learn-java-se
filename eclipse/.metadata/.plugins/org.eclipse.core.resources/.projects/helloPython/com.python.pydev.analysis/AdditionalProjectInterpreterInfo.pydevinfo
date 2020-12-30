@@ -1,0 +1,17 @@
+-- VERSION_4
+-- START DISKCACHE_2
+F:\eclipse-workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\helloPython\com.python.pydev.analysis\v2_indexcache
+loop|1558886174171539000|F:\eclipse-workspace\helloPython\src\loop.py
+hello|1558885627096407000|F:\eclipse-workspace\helloPython\src\hello.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=loop
+-- END DICTIONARY
+-- START TREE 1
+1
+i|1|i!11@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

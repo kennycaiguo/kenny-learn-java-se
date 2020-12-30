@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory >
+	   <!-- 数据库配置 -->
+		 <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		 <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/webuserlist?serverTimezone=UTC</property>
+		 <property name="hibernate.connection.username">root</property>
+		 <property name="hibernate.connection.password">root</property>
+		 <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		 <!-- 自动建表 --> 
+		 <property name="hibernate.hbm2ddl.auto">update</property>
+		 <!-- 加载所有映射 -->
+		 <mapping resource="org/kenny/entity/User.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

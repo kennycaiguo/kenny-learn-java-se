@@ -1,0 +1,11 @@
+package zmt.kenny.dao;
+
+import zmt.kenny.entity.Emp;
+
+public class EmpDao {
+ //增加员工
+	private void add(Emp emp) {
+		// TODO Auto-generated method stub
+        
+	}
+}

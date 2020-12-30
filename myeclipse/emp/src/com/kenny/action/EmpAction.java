@@ -1,0 +1,45 @@
+package com.kenny.action;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kenny.entity.Emp;
+import com.kenny.service.EmpService;
+
+@Controller
+@RequestMapping("/emp")
+public class EmpAction {
+	
+	 
+	 private EmpService empService;
+	 
+	 @Resource(name="empService")
+	 public void setEmpService(EmpService empService) {
+		this.empService = empService;
+	}
+	 
+    public EmpAction(){}
+    
+    @RequestMapping("/findAll")
+    public @ResponseBody Map<String,Object> findAllEmpMethod() throws Exception{
+    	//调用service方法返回list集合
+    	List<Emp> empList = empService.findAllEmps();
+    	//创建map对象封装list集合的数据
+    	Map<String, Object> map=new LinkedHashMap<String, Object>();
+    	map.put("total", empList.size());
+    	map.put("rows", empList);
+		return map;
+    	
+    	
+    }
+   
+    
+    
+}

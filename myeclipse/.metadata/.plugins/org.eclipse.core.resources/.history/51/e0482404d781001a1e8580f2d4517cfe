@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="my.kenny.entity" auto-import="true">
+	
+	<class name="Dept" table="t_dept">
+		<!-- 主键映射-->
+		<id name="deptId">
+			<generator class="native"/>
+		</id>
+        <!-- 非主键映射-->
+		 <property name="deptName" length="20"></property>
+		 <!-- 一对多关联映射的配置 -->
+		 <!-- 想级联保存的话最好加上 cascade="all"否则报错 --><!--  inverse="false" cascade="all" -->
+		 <set name="emps" lazy="false" cascade="save-update">
+		    <key column="dept_Id"></key>
+		    <one-to-many class="Employee"/>
+		 </set>
+	</class>
+   <!-- 在这里放置与本类相关的HQL -->
+	 <query name="getAllDept">from Dept d where deptId:myid or deptName:name</query>
+
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+package com.kenny.dao;
+
+public interface IEmployeeDao {
+
+	   void savebyHbn(Employee emp);
+	     void updata(Employee emp,int id);
+	     Employee findbyId(Serializable id);
+	     List<Employee> getAll();
+	     List<Employee> getAll(String empName);
+}

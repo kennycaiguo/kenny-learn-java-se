@@ -1,0 +1,21 @@
+package soy.kenny.dao.inter;
+
+import java.util.List;
+
+import soy.kenny.entity.Emp;
+
+public interface IEmpDao {
+
+	/**
+     * ��ȡ�ܼ�¼��
+     * @return �ܼ�¼��
+     */
+    public Integer getAllRecord() throws Exception;
+    /**
+     * �����ѯ���м�¼
+     * @param start ��ʾ �ӵڼ�����¼��ʼ
+     * @param end   ��ʾ ���ڼ�����¼����
+     * @return      ��ʾ start��end֮��ļ�¼���ϣ���start��end
+     */
+    public List<Emp> findAllRecord(int start,int end) throws Exception;
+}

@@ -1,0 +1,17 @@
+package zmt.kenny.service;
+
+import zmt.kenny.dao.EmpDao;
+import zmt.kenny.entity.Emp;
+
+public class EmpService {
+	//IOC容器注入
+	private EmpDao empDao;
+	public void setEmpDao(EmpDao empDao) {
+		this.empDao = empDao;
+	}
+   public String register(Emp emp) throws Exception{
+	   
+	return null;
+	   
+   }
+}

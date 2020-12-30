@@ -1,0 +1,46 @@
+package dom4j_write_xml;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
+import org.junit.Test;
+
+public class CreateXml {
+   @Test
+   public void Dom4jCreateXml() throws IOException {
+	   Document doc = DocumentHelper.createDocument();
+	   Element companyElement = doc.addElement("company");
+	   Element employeeElement = companyElement.addElement("employee");
+	   employeeElement.addAttribute("id", "0001");
+	   Element  posElement = employeeElement.addElement("position");
+	   posElement .setText("Manager");
+	   Element nameElement = employeeElement.addElement("name");
+	   nameElement.setText("May");
+	   
+	   Element ageElement = employeeElement.addElement("age");
+	   ageElement.setText("35");
+	   Element salaryElement = employeeElement.addElement("salary");
+	   salaryElement.setText("5000");
+	   Element phoneElement = employeeElement.addElement("phone");
+	   phoneElement.setText("13532699888");
+	   Element emailElement = employeeElement.addElement("email");
+	   emailElement.setText("guimaihong@gmail.com");
+	   Element qqElement = employeeElement.addElement("qq");
+	   qqElement.setText("1055216206");
+	   
+	   
+	   
+	   OutputFormat format=OutputFormat.createPrettyPrint();
+	   format.setEncoding("gbk");
+	   FileOutputStream fos=new FileOutputStream("e:/company.xml");
+		XMLWriter writer=new XMLWriter(fos,format);//这个重载可以设置文件格式
+		writer.write(doc);
+		writer.close();
+   }
+}

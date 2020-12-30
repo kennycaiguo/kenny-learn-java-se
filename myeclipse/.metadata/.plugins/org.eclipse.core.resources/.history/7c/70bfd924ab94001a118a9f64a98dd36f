@@ -1,0 +1,5 @@
+package china.kenny.entity;
+
+public class Student {
+
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="china.kenny.app4_paging.Student">
+  <!-- resultMap:实体类与表的映射
+      type：实体类的全路径
+      id：为实体类与表的映射取一个唯一的编号
+   -->
+  <resultMap type="student4" id="studentMap"><!-- 使用类型别名，在mybatis.xml这设置 -->
+  <!-- id:映射主键属性
+       property：实体类属性名
+       column：数据库字段名
+       result：映射非主键属性
+   -->
+    <id property="id" column="stu_id" />
+	<result property="name" column="stu_name" />
+	<result property="sal" column="stu_sal" />
+  </resultMap>
+  <!-- insert:表示要一个插入sql语句
+     id属性：为插入操作取一个唯一的名字
+     parameterType：dao的方法中的参数，如果是类的话，必须是全路径,如果方法没有参数，可以去掉这个属性
+   -->
+   <insert id="add">
+      insert into students2(stu_id,stu_name,stu_sal) values(1,'Mike',2000)
+   </insert >
+   <insert id="addstu" parameterType="student4"><!-- 这个在mybatis.xml中设置了别名所以可以直接使用 -->
+      insert into students2(stu_id,stu_name,stu_sal) values(#{id},#{name},#{sal})
+   </insert >
+   
+   <!--根据id查询学生 -->
+   <select id="findById" parameterType="int" resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 where stu_id=#{id}
+   </select>
+   <!--查询所有学生 -->
+   <select id="findAll"  resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 
+   </select>
+   
+   <!-- 更新：修改学生信息 -->
+   <update id="update" parameterType="student4" >
+     update students2 set stu_name=#{name},stu_sal=#{sal} where stu_id=#{id}
+   </update>
+   
+   <!-- 删除指定学生 -->
+   <delete id="delete" parameterType="student4" >
+     delete from students2 where stu_id=#{id}
+   </delete>
+</mapper>	

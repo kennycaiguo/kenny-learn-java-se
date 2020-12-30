@@ -1,0 +1,58 @@
+package cr.kenny.one2many;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Test;
+
+import cr.kenny.util.MyBatisUtil2;
+
+public class GradeStudentDao {
+	//主键查询学生信息 
+    public Student findById(int id) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil2.getSqlSession();
+    		Student student=session.selectOne(Student.class.getName()+".findById", id);
+    		return student;
+    	}catch (Exception e) {
+			e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil2.closeSqlSession();
+		}
+		
+    	
+    }
+    
+    //根据姓名查询学生信息
+    public Student findByName(String name) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil2.getSqlSession();
+    		Student student=session.selectOne(Student.class.getName()+".findByName", name);
+    		return student;
+    	}catch (Exception e) {
+    		e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil2.closeSqlSession();
+		}
+    	
+    	
+    }
+    
+    @Test
+    public void testFindById() throws Exception{
+    	GradeStudentDao dao=new GradeStudentDao();
+    	Student student = dao.findById(1);
+    	System.out.println(student +":"+student.getCard());
+    }
+    @Test
+    public void testFindByName() throws Exception{
+    	GradeStudentDao dao=new GradeStudentDao();
+    	Student student = dao.findByName("jackline");
+    	System.out.println(student+":"+student.getCard());
+    }
+}

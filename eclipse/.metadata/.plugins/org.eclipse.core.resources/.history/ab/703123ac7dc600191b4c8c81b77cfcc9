@@ -1,0 +1,81 @@
+package dom4j_write_xml;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
+import org.junit.Test;
+
+public class CreateXml {
+   @Test
+   public void Dom4jCreateXml() throws IOException {
+	   Document doc = DocumentHelper.createDocument();
+	   Element companyElement = doc.addElement("company");
+	   companyElement.addAttribute("name", "Rest Rico");
+	   companyElement.addAttribute("address", "200m sur del bcr");
+	   companyElement.addAttribute("phone", "2661-1091");
+	   
+	   Element employeeElement = companyElement.addElement("employee");
+	   employeeElement.addAttribute("id", "0001");
+	   Element  posElement = employeeElement.addElement("position");
+	   posElement .setText("Manager");
+	   Element nameElement = employeeElement.addElement("name");
+	   nameElement.setText("May");
+	    Element ageElement = employeeElement.addElement("age");
+	   ageElement.setText("35");
+	   Element salaryElement = employeeElement.addElement("salary");
+	   salaryElement.setText("5000000");
+	   Element phoneElement = employeeElement.addElement("phone");
+	   phoneElement.setText("13532619857");
+	   Element emailElement = employeeElement.addElement("email");
+	   emailElement.setText("guimaihong@gmail.com");
+	   Element qqElement = employeeElement.addElement("qq");
+	   qqElement.setText("1055216206");//第一个职员
+	   
+	   Element employeeElement1 = companyElement.addElement("employee");
+	   employeeElement1.addAttribute("id", "0002");
+	   Element  posElement1 = employeeElement1.addElement("position");
+	   posElement1 .setText("president");
+	   Element nameElement1 = employeeElement1.addElement("name");
+	   nameElement1.setText("Kenny");
+	   Element ageElement1 = employeeElement1.addElement("age");
+	   ageElement1.setText("44");
+	   Element salaryElement1 = employeeElement1.addElement("salary");
+	   salaryElement1.setText("5000000");
+	   Element phoneElement1 = employeeElement1.addElement("phone");
+	   phoneElement1.setText("13532619767");
+	   Element emailElement1 = employeeElement1.addElement("email");
+	   emailElement1.setText("kenny887@gmail.com");
+	   Element qqElement1 = employeeElement1.addElement("qq");
+	   qqElement1.setText("1279995329");//第二个职员
+	   
+	   Element employeeElement2 = companyElement.addElement("employee");
+	   employeeElement2.addAttribute("id", "0003");
+	   Element  posElement2 = employeeElement2.addElement("position");
+	   posElement1 .setText("clark");
+	   Element nameElement2 = employeeElement2.addElement("name");
+	   nameElement1.setText("Clara maritza prieto bermudez");
+	   Element ageElement2 = employeeElement2.addElement("age");
+	   ageElement1.setText("50");
+	   Element salaryElement2 = employeeElement2.addElement("salary");
+	   salaryElement1.setText("337900");
+	   Element phoneElement2 = employeeElement2.addElement("phone");
+	   phoneElement1.setText("506 8687-8883");
+	   Element emailElement2 = employeeElement2.addElement("email");
+	   emailElement1.setText("none");
+	   Element qqElement2 = employeeElement2.addElement("qq");
+	   qqElement1.setText("none");//第二个职员
+	   
+	   OutputFormat format=OutputFormat.createPrettyPrint();
+	   format.setEncoding("gbk");
+	   FileOutputStream fos=new FileOutputStream("e:/company.xml");
+		XMLWriter writer=new XMLWriter(fos,format);//这个重载可以设置文件格式
+		writer.write(doc);
+		writer.close();
+   }
+}

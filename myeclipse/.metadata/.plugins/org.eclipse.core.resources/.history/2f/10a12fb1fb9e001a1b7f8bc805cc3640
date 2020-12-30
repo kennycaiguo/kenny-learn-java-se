@@ -1,0 +1,5 @@
+package zmt.kenny.dao;
+
+public class EmpDao {
+
+}

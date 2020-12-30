@@ -1,0 +1,36 @@
+package com.kenny.service;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.springframework.stereotype.Component;
+
+import com.kenny.dao.EmpDao;
+import com.kenny.entity.Emp;
+import com.kenny.util.JdbcUtils;
+
+@Component("empService")
+public class EmpService {
+	
+	@Resource(name="empDao")
+	private EmpDao empDao;
+	
+    
+	public void setEmpDao(EmpDao empDao) {
+		this.empDao = empDao;
+	}
+
+
+	public void register(Emp emp) throws Exception{
+    	empDao.Add(emp);
+    }
+	
+	  public List<Emp> findAllEmps() throws Exception{
+	    	
+			return empDao.findAll();
+	    	
+	    }
+}

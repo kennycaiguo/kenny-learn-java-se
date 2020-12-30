@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="org.kenny.entity">
+	
+	<class name="IDCard" table="idcard">
+		<!-- 主键映射-->
+		<id name="cardNum" column="cardNum">
+			<generator class="assigned"/>
+		</id>
+        <!-- 非主键映射-->
+		<property name="place" length="100"></property>
+		<!-- 注意：这里在将多对 一的基础上添加唯一限制，使其变成一对一-->
+		 <many-to-one name="user" column="user_id" class="User" cascade="save-update"></many-to-one>
+	</class>
+
+	 
+
+</hibernate-mapping>

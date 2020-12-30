@@ -1,0 +1,28 @@
+package dom4j_write_xml;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
+import org.junit.Test;
+
+public class CreateXml {
+   @Test
+   public void Dom4jCreateXml() throws IOException {
+	   Document doc = DocumentHelper.createDocument();
+	   Element companyElement = doc.addElement("company");
+	   Element employeeElement = companyElement.addElement("employee");
+	   employeeElement.addAttribute("id", "0001");
+	   
+	   OutputFormat format=OutputFormat.createPrettyPrint();
+	   FileOutputStream fos=new FileOutputStream("e:/company.xml");
+		XMLWriter writer=new XMLWriter(fos);
+		writer.write(doc);
+		writer.close();
+   }
+}

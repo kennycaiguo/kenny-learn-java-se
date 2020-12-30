@@ -1,0 +1,10 @@
+package dom4jxPath;
+
+import org.junit.Test;
+
+public class Dom4jXpathDemo {
+   @Test
+   public void xPathTest1() {
+	   
+   }
+}

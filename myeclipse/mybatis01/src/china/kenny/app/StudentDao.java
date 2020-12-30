@@ -1,0 +1,60 @@
+package china.kenny.app;
+
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
+
+import china.kenny.util.MyBatisUtil;
+
+public class StudentDao {
+  
+	public void Addstu(Student s) throws Exception{
+		SqlSession sqlSession=null;
+		try {
+			sqlSession=MyBatisUtil.getSqlSession();
+			//����ʼ
+			//��ȡmapperӳ���ļ���sql���
+			//int i=sqlSession.insert("studentNamespace.add");//Ĭ��sql
+		   sqlSession.insert(Student.class.getName()+".addstu",s);//��������
+			//�ύ����
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			//�ع�����
+			sqlSession.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil.closeSqlSession();
+		}
+	}
+	private void Add() throws Exception {
+		SqlSession sqlSession=null;
+		try {
+			sqlSession=MyBatisUtil.getSqlSession();
+			//����ʼ
+			//��ȡmapperӳ���ļ���sql���
+			int i=sqlSession.insert(Student.class.getName()+".add");
+			//�ύ����
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			//�ع�����
+			sqlSession.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil.closeSqlSession();
+		}
+	}
+
+	@Test
+	public void testAdd() throws Exception{
+		StudentDao dao=new StudentDao();
+		dao.Add();
+		}
+	@Test
+	public void testAddstu() throws Exception{
+		StudentDao dao=new StudentDao();
+		dao.Addstu(new Student(2,"clitoris",1000));
+	}
+}
+
+	

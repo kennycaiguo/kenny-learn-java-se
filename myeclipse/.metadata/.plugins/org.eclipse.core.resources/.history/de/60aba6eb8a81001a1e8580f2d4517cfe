@@ -1,0 +1,27 @@
+package my.kenny.entity;
+
+public class Wheel {
+	
+		  private int wheelcount;
+		  private int wheelsize;
+		public int getWheelcount() {
+			return wheelcount;
+		}
+		public void setWheelcount(int wheelcount) {
+			this.wheelcount = wheelcount;
+		}
+		public int getWheelsize() {
+			return wheelsize;
+		}
+		public void setWheelsize(int wheelsize) {
+			this.wheelsize = wheelsize;
+		}
+		@Override
+		public String toString() {
+			return "Wheel [wheelcount=" + wheelcount + ", wheelsize="
+					+ wheelsize + "]";
+		}
+		 
+		  
+		 
+}

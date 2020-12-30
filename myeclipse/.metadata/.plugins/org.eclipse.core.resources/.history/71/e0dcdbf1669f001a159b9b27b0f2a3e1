@@ -1,0 +1,34 @@
+package zmt.kenny.dao;
+
+import java.sql.Connection;
+
+import javax.servlet.jsp.tagext.TryCatchFinally;
+
+import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.ExecutorType;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.TransactionIsolationLevel;
+import org.mybatis.spring.SqlSessionFactoryBean;
+
+import zmt.kenny.entity.Emp;
+import zmt.kenny.util.MyBatisUtil;
+
+public class EmpDao {
+	
+	private SqlSessionFactory sessionFactory;
+		
+	 //从配置文件中来
+	//IOC容器注入
+  
+	public void setSessionFactory(SqlSessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	//增加员工
+	public void add(Emp emp) throws Exception {
+		 SqlSession session = sessionFactory.openSession();
+		 session.insert(Emp.class.getName()+".add", emp);
+		session.close();
+	}
+
+}

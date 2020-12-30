@@ -1,0 +1,23 @@
+package cn.kenny.ws.job;
+
+public class JobServiceImpl implements JobService{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getJob() {
+		 
+		return "javaEE研发工程师|Android研发工程师|前端工程师|测试工程师|运维人员|.net工程师";
+	}
+	public void sayHello(String name) {
+		
+		System.out.println("Hello!"+name);
+	}
+
+}

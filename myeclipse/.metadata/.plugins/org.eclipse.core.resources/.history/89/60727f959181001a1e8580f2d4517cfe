@@ -1,0 +1,82 @@
+package my.kenny.dao;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import my.kenny.entity.Animal;
+import my.kenny.entity.Cat;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.mapping.Set;
+import org.junit.Test;
+
+
+
+public class AnimalDao{
+	
+	private static SessionFactory sf=null;
+    
+    static {
+  	  Configuration conf=new Configuration();
+  	  conf.configure();
+  	  sf=conf.buildSessionFactory();
+    }
+    
+    public Session getSession(){
+    	return sf.openSession();
+    }
+    
+    public void saveAnimal(Animal a){
+    	Session session =sf.openSession();
+		 Transaction tx=session.beginTransaction();
+    	 
+		 session.save(a);
+		tx.commit();
+		 System.out.println("新增了一条记录");
+		 session.close();
+    }
+	 
+    
+    public Animal geAnimal(int num){
+    	Session session =sf.openSession();
+    	Transaction tx=session.beginTransaction();
+    	 Cat c=(Cat) session.get(Cat.class, num);
+    	 System.out.println(c);
+    	tx.commit();
+    	//session.close();
+    	
+		return c;
+    	
+    }
+    public void updateAnimL(int num,Animal newAnimal){
+    	Session session =sf.openSession();
+		 Transaction tx=session.beginTransaction();
+   	     
+		session.update(newAnimal);
+		tx.commit();
+		 System.out.println("更新了一条记录");
+		 session.close();
+    }
+    
+    public void deleteAnimal(Integer id){
+		 Session session =sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		  
+		 //session.delete(d);
+		 tx.commit();
+		 session.close();
+		 System.out.println("删除了一条数据");
+	 }
+    
+    
+	 
+
+}
+	
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slider</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>   <!-- 静态方式 -->
+<!--       <input class="easyui-slider" value="12"  style="width:300px"    -->
+<!--         data-options="showTip:true,rule:[0,'|',25,'|',50,'|',75,'|',100]" />  -->
+            <!--动态方式 -->
+            <div style="margin-left:50px">
+                                                    身高：<span id="num"  ></span>cm 备注：<span id="tip"  ></span><br/></br>
+            <div id="ss" style="height:200px"></div>
+            </div>
+            <script type="text/javascript">
+              $("#ss").slider({
+                  mode: 'v',    
+                  min:150,
+                  max:190,
+                  rule:[150,'|',160,'|',170,'|',180,'|',190],
+                  showTip:true,
+//                   tipFormatter: function(value){    
+//                   return value + '%';    
+//                  }    
+              });
+            </script>
+            <script type="text/javascript">
+              $("#ss").slider({"onChange":function(newValue){
+                  $("#num").text(this.value);
+                  if(newValue==160){
+                     $("#tip").text("合格").css("color","blue");
+                    }else if(newValue==170){
+                         $("#tip").text("较好").css("color","green");
+                      }else if(newValue==180){
+                           $("#tip").text("很好").css("color","purple");
+                        }else if(newValue==190){
+                         $("#tip").text("卓越").css("color","red");
+                  }
+                }
+               });
+            </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="my.kenny.entity">
+	
+	<class name="Project" table="t_project">
+		<!-- 主键映射-->
+		<id name="p_Id">
+			<generator class="native"/>
+		</id>
+        <!-- 非主键映射-->
+		 <property name="pName" length="20"></property>
+		 <!-- 一对多关联映射的配置 -->
+		 <!-- 想级联保存的话最好加上 cascade="all"否则报错 --><!--  inverse="false" cascade="all" -->
+		 <set name="developers" table="t_relation">
+		    <key column="p_Id"></key>
+		     <many-to-many class="Developer" column=""></many-to-many>
+		 </set>
+	</class>
+
+	 
+
+</hibernate-mapping>

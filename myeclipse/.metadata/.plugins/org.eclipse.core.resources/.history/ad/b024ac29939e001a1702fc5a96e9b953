@@ -1,0 +1,14 @@
+create table grades(
+    gid int(5) primary key,
+    gname varchar(10)
+);
+
+create table students(
+    sid int(5) primary key,
+    sname varchar(10),
+    sgid int(5) ,
+    constraint scid_fk foreign key(scid) references cards(cid)
+);
+
+insert into cards(cid,cnum) values(1,"111");
+insert into students(sid,sname,sgid) values(1,"jackline",1);

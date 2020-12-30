@@ -1,0 +1,5 @@
+package cr.kenny.base;
+
+public class Student {
+
+}

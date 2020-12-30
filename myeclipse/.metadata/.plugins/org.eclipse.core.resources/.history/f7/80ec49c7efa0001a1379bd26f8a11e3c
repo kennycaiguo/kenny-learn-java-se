@@ -1,0 +1,10 @@
+package cn.kenny.ws.srv;
+
+public class PhoneService {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

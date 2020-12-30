@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="my.kenny.entity">
+	
+	<class name="Animal" abstract="true">
+	     <!--继承映射 -->
+	     <!-- 这里可以直接写父类的属性 -->
+		 <id name="id">
+		    <generator class="uuid"></generator>
+		 </id>
+        <!-- 非主键映射-->
+        
+		<property name="name"></property>
+		 
+		<!-- 子类映射--> 
+		   <!-- 子类映射Cat--> 
+		<union-subclass name="Cat" table="t_cat">
+		   <property name="CatchMouse"></property>
+		</union-subclass>
+		   <!-- 子类映射Monkey--> 
+		 <union-subclass name="Monkey" table="t_monkey">
+		   <property name="eatBanana"></property>
+		 </union-subclass>  
+		 
+	</class>
+
+	 
+
+</hibernate-mapping>

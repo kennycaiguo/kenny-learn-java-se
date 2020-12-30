@@ -1,0 +1,6 @@
+1587158829494	Delete element
+1587158890251	Rename type 'Employee'
+1587158919313	Rename type 'Dept'
+1587158953460	Rename resource 'Dept.hbm.xml'
+1587158969364	Rename resource 'Employee.hbm.xml'
+1587159244787	Rename type 'EmployeeDao'

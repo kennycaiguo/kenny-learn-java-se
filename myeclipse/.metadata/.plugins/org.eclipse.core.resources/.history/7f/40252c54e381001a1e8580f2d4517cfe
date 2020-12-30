@@ -1,0 +1,80 @@
+package my.kenny.test;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import my.kenny.dao.EmployeeDao;
+import my.kenny.entity.Dept;
+import my.kenny.entity.Employee;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+import org.junit.Test;
+
+
+public class testHbmPaging {
+  
+	 
+	@Test
+	public void testGetDept(){//在Dept.hbm.xml中将lazy设置为lazy="false"，否则报错
+		List<Dept> list=new ArrayList<Dept>();
+		 EmployeeDao ed=new EmployeeDao();
+		  list=ed.getAllDept();
+		 System.out.println(list);
+	 }
+	
+	//查询所有
+	@Test
+	public void testCriteriaGetAllEmp(){
+		Session s=new EmployeeDao().getSession();
+		Transaction ts=s.beginTransaction();
+		Criteria cr=s.createCriteria(Employee.class);
+		System.out.println(cr.list());
+		ts.commit();
+		s.close();
+	}
+	
+	//构建条件
+	@Test
+	public void testCriteriaGetEmp(){
+		Session s=new EmployeeDao().getSession();
+		Transaction ts=s.beginTransaction();
+		//===================精确查询==================
+		Criteria cr=s.createCriteria(Employee.class);
+		//cr.add(Restrictions.eq("empId", 2));//这个表示查找id=2的员工
+		
+//======================多条件精确查询=======================		
+//		Map<Object,Object> termsmap=new HashMap<Object,Object>();
+//		termsmap.put("id",13);
+//		termsmap.put("empName","朱美丽");//查找id=13并且员工姓名="朱美丽"的员工
+//		cr.add(Restrictions.allEq(termsmap));//可以进行多条件精确查询，将条件放入map中并且承认allEq方法中
+		
+	//============================利用between关键字==================================	
+	//	cr.add(Restrictions.between("salary", 2000.0,4000.0));//这里表示查找工资在2000.0到4000.0之间的员工
+///========================l利用like模糊查找==============================		
+	    //cr.add(Restrictions.ilike("empName", "%美%"));// 查找名字含有“美”的员工
+		
+//========================================利用in关键字=====================	
+//		Object[] objs={7,8,9,10};//要先对应员工数组，否则报错
+//		cr.add(Restrictions.in("empId", objs));// 查找名字含有“美”的员工
+		
+//============================主键查询（常用）======================================
+		cr.add(Restrictions.idEq(2));// 查找empId为3的员工
+		System.out.println(cr.list());
+		ts.commit();
+		s.close();
+	}
+	
+	 
+}

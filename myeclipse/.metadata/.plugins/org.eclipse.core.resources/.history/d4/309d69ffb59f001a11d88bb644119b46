@@ -1,0 +1,24 @@
+package cr.kenny.calloracle;
+
+import java.sql.*;
+
+import cr.kenny.util.JdbcUtils;
+
+/**
+ * java调用Oracle函数
+ * @author Administrator
+ *
+ */
+public class CallOracleFunct {
+   public static void main(String[] args) throws Exception {
+	   //需求：查询7788号员工的姓名，职位，工资
+	Connection connection=JdbcUtils.getConnection();
+	String sql="{?=findEmpNameAndJobAndSal(?,?,?)}"; 
+	CallableStatement cStatement=connection.prepareCall(sql);
+	 
+	cStatement.execute();
+	 
+	cStatement.close();
+	connection.close();
+  }
+}

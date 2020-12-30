@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;dom4jwiriteDemo.java&apos; to &apos;dom4j_write_xml/src/dom4j_write_xml&apos;&#x0D;&#x0A;- Original project: &apos;dom4j_write_xml&apos;&#x0D;&#x0A;- Destination element: &apos;dom4j_write_xml/src/dom4j_write_xml&apos;&#x0D;&#x0A;- Original element: &apos;dom4j_write_xml.dom4jwiriteDemo.java&apos;" description="Copy compilation unit" destination="/src&lt;dom4j_write_xml" element1="/src&lt;dom4j_write_xml{dom4jwiriteDemo.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1566600299491" units="1" version="1.0"/>
+</session>

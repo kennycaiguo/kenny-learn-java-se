@@ -1,0 +1,21 @@
+package org.kenny.entity;
+
+public class IDCard {
+   private int user_Id;
+   private String cardNum;
+   
+		public int getUser_Id() {
+			return user_Id;
+		}
+		public void setUser_Id(int user_Id) {
+			this.user_Id = user_Id;
+		}
+		public String getCardNum() {
+			return cardNum;
+		}
+		public void setCardNum(String cardNum) {
+			this.cardNum = cardNum;
+		}
+		
+		
+}

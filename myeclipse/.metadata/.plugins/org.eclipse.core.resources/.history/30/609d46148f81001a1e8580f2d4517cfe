@@ -1,0 +1,52 @@
+package my.kenny.test;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import my.kenny.dao.AnimalDao;
+ 
+
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+
+
+public class TestApp {
+   
+	
+	@Test
+	public void testSaveCar(){
+		
+		 
+	}
+	
+	@Test
+	public void testGetAnimal(){
+		
+		int num=2;
+		AnimalDao ed=new AnimalDao();
+		 
+		 
+		System.out.println("");
+		 
+	}
+	
+	@Test
+	public void testUpdateCar(){
+		 
+	}
+	 
+	@Test
+	public void testDelete(){
+		int num=7;
+		AnimalDao dao=new AnimalDao();
+		 
+	}
+}

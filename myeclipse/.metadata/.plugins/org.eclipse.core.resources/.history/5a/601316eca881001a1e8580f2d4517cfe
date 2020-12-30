@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ 
+
+<hibernate-mapping package="my.kenny.entity">
+	
+	<class name="Cat" table="cat">
+	     <!--继承映射 -->
+	     <!-- 这里可以直接写父类的属性 -->
+		 <id name="id">
+		    <generator class="native"></generator>
+		 </id>
+        <!-- 非主键映射-->
+        
+		<property name="name"></property>
+		 
+		<!-- 子类映射--> 
+		   
+		     <property name="CatchMouse"></property>
+		   
+	</class>
+
+	 
+
+</hibernate-mapping>

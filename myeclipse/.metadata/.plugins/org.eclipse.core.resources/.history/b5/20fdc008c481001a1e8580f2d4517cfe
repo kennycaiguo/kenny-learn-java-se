@@ -1,0 +1,151 @@
+package my.kenny.test;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import my.kenny.dao.EmployeeDao;
+import my.kenny.entity.Dept;
+import my.kenny.entity.Employee;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+
+
+public class TestApp {
+  
+	@Test
+	public void saveDept(){
+		//创建部门对象
+		Dept dept=new Dept();
+		dept.setDeptName("销售部");
+		//创建几个员工对象
+		Employee e1=new Employee();
+		e1.setEmpName("fretty");
+		e1.setSalary(4000);
+		e1.setDept(dept);
+		
+		Employee e2=new Employee();
+		e2.setEmpName("brook");
+		e2.setSalary(3500);
+		e2.setDept(dept);
+		
+		Set<Employee> emps=new HashSet<Employee>();
+		emps.add(e1);
+		emps.add(e2);
+		dept.setEmps(emps);
+		 
+     	EmployeeDao eld=new EmployeeDao();
+     	eld.saveEmp(e1,dept.getDeptId());
+     	eld.saveEmp(e2,dept.getDeptId());   //尽量不要使用级联操作，先保存Employee对象
+     	eld.saveDept(dept); //，再保存Dept对象
+	}
+	
+	@Test
+	public void testSaveEmp(){
+		Employee e1=new Employee();
+		int num=2;
+		e1.setEmpName("Benny");
+		e1.setSalary(2000);
+		
+		EmployeeDao eld=new EmployeeDao();
+		eld.saveEmp(e1,num);
+		
+	}
+	
+	@Test
+	public void testGetDept(){//在Dept.hbm.xml中将lazy设置为lazy="false"，否则报错
+		List<Dept> list=new ArrayList<Dept>();
+		 EmployeeDao ed=new EmployeeDao();
+		  list=ed.getAllDept();
+		 System.out.println(list);
+	 }
+	
+	@Test
+	public void testHqlGetfileds(){
+		Session s=new Configuration().configure().buildSessionFactory().openSession();
+		//Query q=s.createQuery("select new Dept(d.deptId,d.deptName) from Dept d");
+		
+//		Query q=s.createQuery(" from Dept where deptId=? and deptName=? ");
+//		q.setParameter(0, 2);
+//		q.setParameter(1, "财政部");
+//================================命名查询===============================
+//		Query q=s.createQuery(" from Dept where deptId=:myid and deptName=:name ");//可以为参数起别名
+//		q.setParameter("myid", 2);
+//		q.setParameter("name", "财政部");
+		
+//=============================范围查询==============================
+//		Query q=s.createQuery(" from Dept where deptId between ? and ?");//可以为参数起别名
+//		q.setParameter(0, 2);
+//		q.setParameter(1, 6);
+//=============================模糊查询==============
+//		Query q=s.createQuery(" from Dept where deptName like ?");//括号里面不支持“%”
+//		q.setParameter(0, "%研%");
+//		List<Dept> list= new ArrayList<Dept>();
+//		Transaction ts=s.beginTransaction();
+//			list=q.list();
+//			for(Dept d:list){
+//				System.out.println(d);
+//			}
+//		ts.commit();
+//		s.close();
+//====================分组查询一员工表为例==========================
+		 
+		List<Employee> list= new ArrayList<Employee>();
+		Query q=s.createQuery("select e.dept,count(*) from Employee e group by e.dept");//括号里面不支持“%”
+		Transaction ts=s.beginTransaction();
+			list=q.list();
+			//System.out.println(list);
+			for(int i=0;i<list.size();i++){
+				Employee e=(Employee)list.get(i);
+				System.out.println(e.getEmpId());
+				System.out.println(e.getEmpName());
+			}
+		ts.commit();
+		s.close();
+		
+		
+//=====================================聚合函数查询===============================
+//		Query q=s.createQuery(" Select count(*) from Dept");//括号里面不支持“%”，也不支持直接*，count的括号里面只能写*
+//		Transaction ts=s.beginTransaction();
+//		Long num= (Long) q.uniqueResult();//注意这里不能用int接收，会报错
+//		 
+//		System.out.println(num);
+//		
+//		ts.commit();
+//		s.close();
+	}
+	
+	@Test
+	public void testUpdateDeptsameWorker(){
+		Dept newdept=new Dept();
+		EmployeeDao eld=new EmployeeDao();
+		Session s=eld.getSession();
+		int num=2;
+	    Query q =s.createQuery("from Employee where dept_id="+num);
+		List<Employee> list = q.list();
+		Set<Employee> set=new HashSet<Employee>();
+		for(Employee e:list){
+			set.add(e);
+		}
+		Employee e1=eld.findbyIdEmp(num);
+		newdept.setDeptName("财政部");
+		newdept.setEmps(set);
+		eld.updateDeptAll(num, newdept);
+		
+	}
+	 
+	@Test
+	public void testDelete(){
+		int num=7;
+		EmployeeDao dao=new EmployeeDao();
+		dao.deleteDept(num);//被外键引用的表必须要将inverse属性设置为false，也就是有控制器，才能删除，否则报错
+	}
+}

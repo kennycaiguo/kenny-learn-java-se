@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ComboBox（下拉列表框）</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>   <!-- 静态方式 -->
+<!--           城市 -->
+<!--           <select id="cityID" class="easyui-combobox" name="city" style="width:200px;">    -->
+<!-- 			    <option value="aa">广州</option>    -->
+<!-- 			    <option>东莞</option>    -->
+<!-- 			    <option>佛山</option>    -->
+<!-- 			    <option>珠海</option>    -->
+<!-- 			    <option>深圳</option>    -->
+<!--            </select>   -->
+           <!-- 动态方式 -->
+          城市
+          <input id="cityID" name="city"/> 
+       <script type="text/javascript">
+         $("#cityID").combobox({
+             url:"../json/city.json",
+             valueField:"id",    
+    		 textField:"text"   
+         });
+       </script>
+       <script type="text/javascript">
+       $(function(){
+           //设置默认选中项，如果json文件有指定，则json文件的优先
+          $("#cityID").combobox("setValue","武汉");
+           
+       });
+       
+             
+       </script>
+           
+  </body>
+</html>

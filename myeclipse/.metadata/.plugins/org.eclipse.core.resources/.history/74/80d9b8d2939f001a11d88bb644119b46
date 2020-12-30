@@ -1,0 +1,25 @@
+package zmt.kenny.action;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import zmt.kenny.entity.Emp;
+import zmt.kenny.service.EmpService;
+   
+  
+@Controller
+@RequestMapping(value="/emp")
+public class EmpAction {
+	//IOC 容器注入
+	  private EmpService empService;
+	  public void setEmpService(EmpService empService) {
+		this.empService = empService;
+	}
+  //注册员工
+	
+	public String registerMethod(Emp emp) throws Exception{
+		
+		return "success";
+		
+	}
+}

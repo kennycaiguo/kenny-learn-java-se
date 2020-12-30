@@ -1,0 +1,39 @@
+package org.kenny.app2_08;
+
+import java.util.Date;
+import java.util.UUID;
+
+public class Emp {
+	 
+   
+	private String username;//用户名
+	private Double salary;//薪水
+  
+    public Emp(){}
+ 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	 
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
+
+	@Override
+	public String toString() {
+		return "[Emp username=" + username + ", salary=" + salary + "]";
+	}
+
+    
+	 
+}

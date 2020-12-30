@@ -1,0 +1,6 @@
+D:\Workspaces\MyEclipse 10\.metadata\.plugins\org.eclipse.dltk.core\392105321.index
+D:\Workspaces\MyEclipse 10\.metadata\.plugins\org.eclipse.dltk.core\763770275.index
+D:\Workspaces\MyEclipse 10\.metadata\.plugins\org.eclipse.dltk.core\735577809.index
+D:\Workspaces\MyEclipse 10\.metadata\.plugins\org.eclipse.dltk.core\2063544981.index
+D:\Workspaces\MyEclipse 10\.metadata\.plugins\org.eclipse.dltk.core\3029296153.index
+D:\Workspaces\MyEclipse 10\.metadata\.plugins\org.eclipse.dltk.core\3013175232.index

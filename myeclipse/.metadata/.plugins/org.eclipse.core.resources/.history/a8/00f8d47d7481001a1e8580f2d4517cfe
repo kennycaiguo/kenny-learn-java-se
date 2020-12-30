@@ -1,0 +1,5 @@
+package org.kenny.entity;
+
+public class IDCard {
+
+}

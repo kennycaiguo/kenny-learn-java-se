@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/commons-dbutils-1.7.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/commons-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/freemarker-2.3.19.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/javassist-3.11.0.GA.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/jstl-1.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/ognl-3.0.5.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/standard-1.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/struts2-core-2.3.4.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/struts2-json-plugin-2.3.4.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Strutslib/xwork-core-2.3.4.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Java操作Oracle数据库依赖包/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/composite-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/httpclient5-5.0.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/json-lib-2.1-jdk15.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/Jsonlibs/morph-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Software/Userlib/hibernatelib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

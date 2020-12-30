@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NumberSpinner(数字微调组件)</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>   <!-- 静态方式 -->
+<!--   <input id="ss" class="easyui-numberspinner" style="width:80px;"    -->
+<!--         required="required" data-options="min:10,max:100,editable:false">   -->
+
+           <!-- 动态方式 -->
+        商品数量：
+          <input id="ns"  style="width:80px;" name="nbs" />  
+
+       <script type="text/javascript">
+         $("#ns").numberspinner({
+               //required:"required",
+               min: 1,    
+               max: 100,    
+               editable:true,
+               value:10
+
+         });
+         
+       </script>
+      
+           <p>
+                  你一共购买了<span id="num"></span>个商品
+            
+       <script type="text/javascript">
+        
+       $("#ns").numberspinner({
+             onSpinUp:function(){
+	             //获取数字微调当前值
+	             var value= $("#ns").numberspinner("getValue");
+                 //将当前值设置到span
+                 $("#num").text(value);
+             } ,
+             onSpinDown:function(){
+                var value= $("#ns").numberspinner("getValue");
+                 //将当前值设置到span
+                 $("#num").text(value);
+             }
+//              onChange:function(){
+//               var value= $("#ns").numberspinner("getValue");
+                 //将当前值设置到span
+//                  $("#num").text(value);
+//              }
+         });
+             
+       </script>
+       <script type="text/javascript">
+         $("#ns").keyup(function(event){
+            //将浏览器产生的事件对象保存到myevent变量中
+            var myevent=event;
+            //获取按键的Unicode编码
+            var code=myevent.keyCode;
+            //如果按下的是enter键，就执行设置span标签的内容
+            if(code==13){
+             // $("#num").text(this.value);
+             //alert($("#ns").numberspinner("getValue"));
+              $("#num").text($(this).val());
+              
+            }
+            
+         });
+       </script>
+  </body>
+</html>

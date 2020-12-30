@@ -1,0 +1,12 @@
+package cr.kenny.calloracle;
+
+import com.mysql.jdbc.Connection;
+
+import cr.kenny.util.JdbcUtils;
+
+public class CallOracleProc {
+   public static void main(String[] args) throws Exception {
+	Connection connection=JdbcUtils.getConnection();
+	System.out.println(connection);
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProgressBar（进度条）</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>   <!-- 静态方式 -->
+<!--       <input class="easyui-slider" value="12"  style="width:300px"    -->
+<!--         data-options="showTip:true,rule:[0,'|',25,'|',50,'|',75,'|',100]" />  -->
+            <!--动态方式 -->
+<!--             <div style="margin-left:50px"> -->
+<!--                                                     身高：<span id="num"  ></span>cm 备注：<span id="tip"  ></span><br/></br> -->
+            <div id="p" style="height:20ppx"></div>
+            
+            <script type="text/javascript">
+              $("#p").progressbar({
+                  //value:"30"
+              });
+            </script>
+            <br><input id="btn" type="button" value="动起来"/>
+            <script type="text/javascript">
+               function getRndNum(){
+                 
+                  return  Math.floor(Math.random()*9)+1;
+               }
+               
+               
+            </script>
+            <script type="text/javascript">
+               for(var i=0;i<10;i++){
+                  var num=getRndNum();
+                 // document.write(num+"<br/>");
+               }
+            </script>
+            <script type="text/javascript">
+            var timeID=null;
+               function update(){
+               //获取随机进度
+                 var num=getRndNum();
+                 //获取进度条当前值
+                 var value=$("#p").progressbar("getValue");
+                 //如果当前值+进度值大于最大值，必须将其设置为最大值，标签停止步进
+                 if(value+num>100){
+                   //设置最大值
+                   $('#p').progressbar('setValue', 100);
+                  // 停止定时器
+                  window.clearInterval(timeID);
+                  //恢复按钮
+                  $("#btn").removeAttr("disabled");
+                  }else{
+                     //设置进度条的值为当前值+进度值
+                     $('#p').progressbar('setValue', value+num);
+                 }
+               }
+               $("#btn").click(function(){
+                           timeID= window.setInterval("update()",300);
+                           //将按钮失效
+                           $(this).attr("disabled","disabled");
+                });
+            </script>
+<!--             <script type="text/javascript"> -->
+               
+<!--                $("#btn").click(function(){ -->
+<!--                         var value=0; -->
+<!--                       var timeID= setInterval(function(){ -->
+                       
+<!-- 	               		var val = getRndNum();  -->
+<!-- 						 //alert(val); -->
+<!-- 						value += val;  -->
+<!-- 						$('#p').progressbar('setValue', value);  -->
+<!--                    },300); -->
+                  
+					 
+                 
+<!--                }); -->
+<!--             </script> -->
+</body>
+</html>

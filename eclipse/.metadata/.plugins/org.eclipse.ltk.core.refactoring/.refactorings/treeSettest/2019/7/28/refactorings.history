@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;TreeSetDemo.java&apos; to &apos;treeSettest/src/treeSettest&apos;&#x0D;&#x0A;- Original project: &apos;treeSettest&apos;&#x0D;&#x0A;- Destination element: &apos;treeSettest/src/treeSettest&apos;&#x0D;&#x0A;- Original element: &apos;treeSettest.TreeSetDemo.java&apos;" description="Copy compilation unit" destination="/src&lt;treeSettest" element1="/src&lt;treeSettest{TreeSetDemo.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1562712767037" units="1" version="1.0"/>
+</session>

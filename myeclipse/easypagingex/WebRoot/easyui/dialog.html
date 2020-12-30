@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dialog对话框</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>  
+        <input id="btn" type="button" value="打开对话框" />   
+           
+        <div id="dlg"  ></div>
+      
+        <script type="text/javascript">
+           $("#btn").click(function(){
+           
+              $("#dlg").dialog({
+                  title:"dialog",
+                  "iconCls":"icon-save",
+                  width:300,
+                  height:200,
+                  closable:false,
+                  modal:true,
+                  toolbar:[{
+				text:'编辑',
+							iconCls:'icon-edit',
+							handler:function(){alert('edit')}
+						},{
+							text:'帮助',
+							iconCls:'icon-help',
+							handler:function(){alert('help')}
+						}],
+                  buttons:[{    "iconCls":"icon-save",
+								text:'提交',
+								handler:function(){}
+							},{
+							    "iconCls":"icon-cancel",
+								text:'关闭',
+								handler:function(){
+								  $("#dlg").dialog("close");
+								}
+							}],
+							href:"form.html"
+				                   
+              });
+           });
+           
+           
+        </script>
+  </body>
+</html>

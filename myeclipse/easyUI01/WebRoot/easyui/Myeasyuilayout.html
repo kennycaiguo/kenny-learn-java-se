@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>简易布局</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- 导入css文件，没有顺序-->
+    <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+     <!-- 导入js文件，有顺序-->
+     <script type="text/javascript" src="../js/jquery.min.js"></script>
+     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  </head>
+  
+  <body>
+	  <script type="text/javascript">
+	         $(function(){
+	            //将北边折叠
+	            $("#cc").layout('collapse','north');
+	            //3秒后将南边折叠同时展开北边
+               window.setTimeout(function(){
+                   
+                   $("#cc").layout('collapse','south');
+                    $("#cc").layout('expand','north');
+                    window.setTimeout(function(){
+                      //3秒钟后展开南边
+                   $("#cc").layout('expand','south');
+                    
+                 },3000);
+               
+              },3000);
+               
+	         });
+           		 //   将北边折叠起来
+            
+      </script>
+	      <div id="cc" class="easyui-layout" style="width:600px;height:400px;" data-options="fit:true">  
+	          <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>   
+	          <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>   
+	          <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>   
+	          <div data-options="region:'west',title:'West',split:true" style="width:100px;"></div>   
+	          <div data-options="region:'center',title:'center title' ,href:'girl.html'" style="padding:5px;background:#eee;"></div>   
+          </div> 
+          
+    </body>
+</html>

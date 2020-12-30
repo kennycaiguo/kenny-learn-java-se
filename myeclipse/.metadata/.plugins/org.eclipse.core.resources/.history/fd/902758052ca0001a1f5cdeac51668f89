@@ -1,0 +1,34 @@
+package cn.kenny.ws.a;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane.ScalableIconUIResource;
+
+/**
+ * socket通信服务端，实现大小写转换
+ */
+public class SocketSer {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+        ServerSocket ss=new ServerSocket(5555);
+        //接受客户端请求
+        System.out.println("监听客户端数据。。。。");
+        Socket socket = ss.accept();
+        //获取输入流接受客户端数据
+        
+		InputStream inputStream = socket.getInputStream();
+		byte[] buffer=new byte[1024];
+		int len=-1;
+		len=inputStream.read(buffer);
+		String getDataString=new String(buffer,0, len);
+	}
+
+}

@@ -1,0 +1,33 @@
+package my.kenny.entity;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Developer implements Serializable {
+	
+	 private int dId;
+	 private String dName;
+	 Set<Project> projects=new HashSet<Project>();
+	public int getdId() {
+		return dId;
+	}
+	public void setdId(int dId) {
+		this.dId = dId;
+	}
+	public String getdName() {
+		return dName;
+	}
+	public void setdName(String dName) {
+		this.dName = dName;
+	}
+	public Set<Project> getProjects() {
+		return projects;
+	}
+	public void setProjects(Set<Project> projects) {
+		this.projects = projects;
+	}
+	 
+	 
+	 
+}

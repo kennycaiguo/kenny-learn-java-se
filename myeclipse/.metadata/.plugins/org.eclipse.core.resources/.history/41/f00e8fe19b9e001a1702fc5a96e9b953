@@ -1,0 +1,63 @@
+package cr.kenny.one2many;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Test;
+
+import cr.kenny.util.MyBatisUtil2;
+import cr.kenny.util.MyBatisUtil3;
+
+public class GradeStudentDao {
+	//主键查询学生信息 
+    public Student findById(int id) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil3.getSqlSession();
+    		Student student=session.selectOne(Student.class.getName()+".findById", id);
+    		return student;
+    	}catch (Exception e) {
+			e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil3.closeSqlSession();
+		}
+		
+    	
+    }
+    
+     
+    public List<Student> findAllByName(String name) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil3.getSqlSession();
+    		List<Student>  studentlist=session.selectOne(Student.class.getName()+".findAllByName", name);
+    		return studentlist;
+    	}catch (Exception e) {
+    		e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil3.closeSqlSession();
+		}
+    	
+    	
+    }
+    
+    @Test
+    public void testFindById() throws Exception{
+    	GradeStudentDao dao=new GradeStudentDao();
+    	Student student = dao.findById(1);
+    	System.out.println(student +":"+student.getGrade());
+    }
+    @Test
+    public void testFindAllByName() throws Exception{
+    	GradeStudentDao dao=new GradeStudentDao();
+    	List<Student>students = dao.findAllByName("java");
+    	for (Student student : students) {
+			System.out.println(student);
+		}
+    }
+}

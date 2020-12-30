@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="easypagingex"
+  id="myeclipse.1589636062473"
+  context-root="/easypagingex"
+  j2ee-spec="5.0"
+  archive="easypagingex.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,39 @@
+1590359275006	Rename package 'many2many'
+1590359291891	Rename package 'one2many'
+1590359307627	Rename package 'one2one'
+1590359327879	Rename package 'util'
+1590360170296	Rename resource 'StudentMapper5.xml'
+1590410933234	Copy file
+1590411067576	Copy file
+1590411239975	Copy compilation unit
+1590411522154	Copy file
+1590413842562	Rename resource ' mybatis2.xml'
+1590416407175	Copy file
+1590416424925	Rename resource 'one2one.sql'
+1590417073963	Copy compilation unit
+1590419124773	Copy files
+1590419140688	Rename resource 'CardMapper.xml'
+1590419166146	Copy file
+1590419170729	Copy file
+1590419182872	Delete element
+1590419197091	Copy compilation unit
+1590419261067	Copy file
+1590419725104	Copy compilation unit
+1590419744628	Rename type 'StudentCardDao'
+1590442695924	Copy file
+1590442717901	Rename resource 'one2many.sql'
+1590442933322	Copy elements
+1590443032619	Rename type 'Grade'
+1590443206013	Copy file
+1590443221897	Copy file
+1590443357050	Rename resource 'GradeMapper.xml'
+1590443436417	Copy file
+1590444476113	Copy compilation unit
+1590450348517	Copy compilation unit
+1590450365604	Rename type 'GradeStudentDao'
+1590460369755	Copy file
+1590460530299	Copy file
+1590460629276	Copy compilation unit
+1590538114936	Copy compilation unit
+1590538737134	Rename type 'CallOracleProc'
+1590538754530	Rename type 'CallOracleFunc'

@@ -1,0 +1,13 @@
+package cn.kenny.ws.a;
+
+public class ws_client {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

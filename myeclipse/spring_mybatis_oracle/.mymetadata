@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="spring_mybatis_oracle"
+  id="myeclipse.1590456980078"
+  context-root="/spring_mybatis_oracle"
+  j2ee-spec="5.0"
+  archive="spring_mybatis_oracle.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

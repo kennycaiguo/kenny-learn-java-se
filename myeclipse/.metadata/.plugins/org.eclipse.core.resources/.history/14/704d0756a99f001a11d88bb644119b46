@@ -1,0 +1,17 @@
+package cr.kenny.calloracle;
+
+import java.sql.*;
+
+import cr.kenny.util.JdbcUtils;
+
+public class CallOracleProc {
+   public static void main(String[] args) throws Exception {
+	Connection connection=JdbcUtils.getConnection();
+	String sql="{call get-rax(?,?)}";//java调用过程的语法
+	CallableStatement cStatement=connection.prepareCall(sql);
+	//System.out.println(connection);
+	cStatement.setObject(0,7000);
+	cStatement.close();
+	connection.close();
+  }
+}

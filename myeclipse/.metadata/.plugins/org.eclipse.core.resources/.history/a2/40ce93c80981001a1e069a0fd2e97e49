@@ -1,0 +1,44 @@
+package my.kenny.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Project {
+   private int p_Id;
+   private String pName;
+   private Set<Developer> developers=new HashSet<Developer>();
+ 
+public int getP_Id() {
+	return p_Id;
+}
+public void setP_Id(int p_Id) {
+	this.p_Id = p_Id;
+}
+public String getpName() {
+	return pName;
+}
+public void setpName(String pName) {
+	this.pName = pName;
+}
+public Set<Developer> getDevelopers() {
+	return developers;
+}
+public void setDevelopers(Set<Developer> developers) {
+	this.developers = developers;
+}
+@Override
+public String toString() {
+	    String  strdev="";
+	    strdev+="[";
+	    for(Developer d:developers){
+	    	strdev+="{ID:"+d.getD_Id()+"," ;
+	    	strdev+=d.getdName()+","+"}\r\n";
+	    }
+	    strdev+="]";
+	return "Project [p_Id=" + p_Id + ", pName=" + pName + ", developers="
+			+ strdev + "]";
+}
+   
+
+		 
+}

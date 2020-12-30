@@ -1,0 +1,59 @@
+package my.kenny.test;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import my.kenny.dao.EmployeeDao;
+import my.kenny.entity.Dept;
+import my.kenny.entity.Employee;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+import org.junit.Test;
+
+
+public class TestAppCriteria {
+  
+	 
+	@Test
+	public void testGetDept(){//在Dept.hbm.xml中将lazy设置为lazy="false"，否则报错
+		List<Dept> list=new ArrayList<Dept>();
+		 EmployeeDao ed=new EmployeeDao();
+		  list=ed.getAllDept();
+		 System.out.println(list);
+	 }
+	
+	//查询所有
+	@Test
+	public void testCriteriaGetAllEmp(){
+		Session s=new EmployeeDao().getSession();
+		Transaction ts=s.beginTransaction();
+		Criteria cr=s.createCriteria(Employee.class);
+		System.out.println(cr.list());
+		ts.commit();
+		s.close();
+	}
+	
+	//构建条件
+	@Test
+	public void testCriteriaGetEmp(){
+		Session s=new EmployeeDao().getSession();
+		Transaction ts=s.beginTransaction();
+		Criteria cr=s.createCriteria(Employee.class);
+		cr.add(Restrictions.eq("empId", 2));
+		System.out.println(cr.list());
+		ts.commit();
+		s.close();
+	}
+	
+	 
+}

@@ -1,0 +1,5 @@
+package com.kenny.dao;
+
+public interface IEmployeeDao {
+
+}

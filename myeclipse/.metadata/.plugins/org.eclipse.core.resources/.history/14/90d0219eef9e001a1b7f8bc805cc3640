@@ -1,0 +1,90 @@
+package cr.kenny.many2many;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Test;
+
+import cr.kenny.util.MyBatisUtil2;
+import cr.kenny.util.MyBatisUtil3;
+import cr.kenny.util.MyBatisUtil4;
+
+public class StudentCourseDao {
+	//主键查询学生信息 
+    public Student findById(int id) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil4.getSqlSession();
+    		Student student=session.selectOne(Student.class.getName()+".findById", id);
+    		return student;
+    	}catch (Exception e) {
+			e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil4.closeSqlSession();
+		}
+		
+    	
+    }
+    
+     //需求：某某学生学了多少门课程
+    public List<Course> findAllByName(String name) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil4.getSqlSession();
+    		List<Course>  courseList=session.selectList("courseNs.findAllByName", name);
+    		return courseList;
+    	}catch (Exception e) {
+    		e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil4.closeSqlSession();
+		}
+    	
+    	
+    }
+    public List<Student> findStusByCourseName(String name) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil4.getSqlSession();
+    		 
+    		return session.selectList(Student.class.getName()+".findStusByCourseName", name);
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    		//session.rollback();
+    		throw e;
+    	}finally{
+    		MyBatisUtil3.closeSqlSession();
+    	}
+    	
+    	
+    }
+    
+    @Test
+    public void testFindById() throws Exception{
+    	StudentCourseDao dao=new StudentCourseDao();
+    	Student student = dao.findById(1);
+    	System.out.println(student +":");
+    }
+    @Test
+    public void testFindAllByName() throws Exception{
+    	StudentCourseDao dao=new StudentCourseDao();
+    	String strname="tary";
+    	List<Course>courses = dao.findAllByName(strname);
+    	System.out.println(strname+"一共学了"+courses.size()+"门课程");
+    	 for (Course course : courses) {
+			System.out.println("id:"+course.getId()+";name:"+course.getName());
+		}
+    }
+    @Test
+    public void testFindStusByCourseName() throws Exception{
+    	StudentCourseDao dao=new StudentCourseDao();
+    	String strcourse="java";
+    	 List<Student> stus=dao.findStusByCourseName(strcourse);
+    	System.out.println("选修"+strcourse+"同学一共有"+ " "+"学科的学生");
+    	 
+    }
+}

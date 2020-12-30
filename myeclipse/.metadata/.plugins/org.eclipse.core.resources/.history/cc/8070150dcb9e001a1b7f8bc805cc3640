@@ -1,0 +1,87 @@
+package cr.kenny.one2many;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Test;
+
+import cr.kenny.util.MyBatisUtil2;
+import cr.kenny.util.MyBatisUtil3;
+
+public class GradeStudentDao {
+	//主键查询学生信息 
+    public Student findById(int id) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil3.getSqlSession();
+    		Student student=session.selectOne(Student.class.getName()+".findById", id);
+    		return student;
+    	}catch (Exception e) {
+			e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil3.closeSqlSession();
+		}
+		
+    	
+    }
+    
+     //需求：统计java学科有多少个学生
+    public List<Student> findAllByName(String name) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil3.getSqlSession();
+    		List<Student>  studentlist=session.selectList(Student.class.getName()+".findAllByName", name);
+    		return studentlist;
+    	}catch (Exception e) {
+    		e.printStackTrace();
+			//session.rollback();
+			throw e;
+		}finally{
+			MyBatisUtil3.closeSqlSession();
+		}
+    	
+    	
+    }
+    public Grade findGradeByStuName(String name) throws Exception{
+    	SqlSession session=null;
+    	try{
+    		session=MyBatisUtil3.getSqlSession();
+    		Grade  g=session.selectOne(Student.class.getName()+".findGradeByStuName", name);
+    		return g;
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    		//session.rollback();
+    		throw e;
+    	}finally{
+    		MyBatisUtil3.closeSqlSession();
+    	}
+    	
+    	
+    }
+    
+    @Test
+    public void testFindById() throws Exception{
+    	GradeStudentDao dao=new GradeStudentDao();
+    	Student student = dao.findById(1);
+    	System.out.println(student +":"+student.getGrade());
+    }
+    @Test
+    public void testFindAllByName() throws Exception{
+    	GradeStudentDao dao=new GradeStudentDao();
+    	List<Student>students = dao.findAllByName("java");
+    	System.out.println("java学科有"+students.size()+"个学生");
+    	for (Student student : students) {
+			System.out.println(student);
+		}
+    }
+    @Test
+    public void testFindGradeByStuName() throws Exception{
+    	GradeStudentDao dao=new GradeStudentDao();
+    	Grade grade = dao.findGradeByStuName("jackline");
+    	System.out.println(grade);
+    	 
+    }
+}

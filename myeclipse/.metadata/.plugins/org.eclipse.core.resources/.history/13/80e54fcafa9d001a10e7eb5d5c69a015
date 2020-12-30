@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="china.kenny.app5_dynamicSQLQr.Student">
+  <!-- resultMap:实体类与表的映射
+      type：实体类的全路径
+      id：为实体类与表的映射取一个唯一的编号
+   -->
+  <resultMap type="student5" id="studentMap"><!-- 使用类型别名，在mybatis.xml这设置 -->
+  <!-- id:映射主键属性
+       property：实体类属性名
+       column：数据库字段名
+       result：映射非主键属性
+   -->
+    <id property="id" column="stu_id" />
+	<result property="name" column="stu_name" />
+	<result property="sal" column="stu_sal" />
+  </resultMap>
+  <!-- insert:表示要一个插入sql语句
+     id属性：为插入操作取一个唯一的名字
+     parameterType：dao的方法中的参数，如果是类的话，必须是全路径,如果方法没有参数，可以去掉这个属性
+   -->
+   <insert id="add">
+      insert into students2(stu_id,stu_name,stu_sal) values(1,'Mike',2000)
+   </insert >
+   <insert id="addstu" parameterType="student5"><!-- 这个在mybatis.xml中设置了别名所以可以直接使用 -->
+      insert into students2(stu_id,stu_name,stu_sal) values(#{id},#{name},#{sal})
+   </insert >
+   <!-- 动态SQl插入学生 需要与sql标签一起使用-->
+   <sql id="key">
+      <trim prefixOverrides=",">
+         <if test="if stu_id!=null">
+             stu_id,
+         </if>
+         <if test="if stu_name!=null">
+             stu_name,
+         </if>
+         <if test="if stu_sal!=null">
+             stu_sal,
+         </if>
+      </trim>
+   </sql>
+   <sql id="value">
+      <trim prefixOverrides=",">
+          <if test="if id!=null">
+             #{id},
+         </if>
+         <if test="if name!=null">
+             #{name},
+         </if>
+         <if test="if sal!=null">
+             #{sal},
+         </if>
+      </trim>
+   </sql>
+   <insert id="dynamicInsert" parameterType="student5"><!-- 这个在mybatis.xml中设置了别名所以可以直接使用 -->
+      insert into students2(<include refid="key" />) values(<include refid="value" />)
+   </insert >
+   
+    <!--动态SQl精确查询学生 -->
+     <select id="dynamicFindAll" parameterType="map" resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 
+             <where>
+               <if test="pid!=null">
+                 and stu_id=#{pid}
+               </if>
+               <if test="pname!=null">
+                and stu_name=#{pname}
+               </if>
+               <if test="psal!=null">
+                 and stu_sal=#{psal}
+               </if>
+             </where>
+   </select>
+    <!--动态SQl模糊查询学生 -->
+     <select id="dynamicFindAll2" parameterType="map" resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 
+             <where>
+               
+               <if test="pid!=null">
+                 and stu_id=#{pid}
+               </if>
+               <if test="pname!=null">
+                and stu_name like#{pname}
+               </if>
+               <if test="psal!=null">
+                 and stu_sal=#{psal}
+               </if>
+             </where>
+   </select>
+   
+   <!--根据id查询学生 -->
+   <select id="findById" parameterType="int" resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 where stu_id=#{id}
+   </select>
+   <!--查询所有学生 -->
+   <select id="findAll"  resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 
+   </select>
+   <!--无分页查询所学生 -->
+   <select id="findAllpaging"  parameterType="map" resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 limit #{pstart},#{psize}
+   </select>
+
+
+
+   
+   <!--条件分页查询所学生 -->
+   <select id="findAllFyByName"  parameterType="map" resultMap="studentMap">
+             select stu_id,stu_name,stu_sal from students2 
+             where stu_name like #{pname}
+             limit #{pstart},#{psize} 
+   </select>
+   
+   <!-- 更新：修改学生信息 -->
+   <update id="update" parameterType="student5" >
+     update students2 set stu_name=#{name},stu_sal=#{sal} where stu_id=#{id}
+   </update>
+   
+   <!-- 动态SQl更新：修改学生信息 -->
+   <update id="dynamicUpdate" parameterType="student5" >
+     update students2
+      <set>
+         <if test="name!=null">
+            stu_name=#{name},
+         </if>
+         <if test="sal!=null">
+             stu_sal=#{sal},
+         </if>
+      </set>
+      where stu_id=#{id}
+   </update>
+   <!-- 动态SQl更新：修改学生信息 -->
+   <update id="dynamicUpdate2" parameterType="map" >
+     update students2
+      <set>
+         <if test="pname!=null">
+            stu_name=#{pname},
+         </if>
+         <if test="psal!=null">
+             stu_sal=#{psal},
+         </if>
+      </set>
+      where stu_id=#{pid}
+   </update>
+   
+   <!-- 动态批量删除指定id学生，传入数组 -->
+   <delete id="dynamicDelete" >
+     delete from students2 where stu_id in
+     <foreach collection="array"
+              item="ids"
+              open="("   
+              close=")"
+              separator=",">
+              #{ids}
+    </foreach>
+   </delete>
+   
+   <!-- 动态批量删除指定id学生 传入集合 -->
+   <delete id="dynamicDeleteList" >
+     delete from students2 where stu_id in
+     <foreach collection="list"
+              item="ids"
+              open="("   
+              close=")"
+              separator=",">
+              #{ids}
+    </foreach>
+   </delete>
+   
+   <!-- 删除指定学生 -->
+   <delete id="delete" parameterType="student5" >
+     delete from students2 where stu_id=#{id}
+   </delete>
+</mapper>	

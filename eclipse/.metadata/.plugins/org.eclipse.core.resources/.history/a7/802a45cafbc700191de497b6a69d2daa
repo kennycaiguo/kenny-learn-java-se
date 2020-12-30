@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>利用dom4j读取标准html文件</title>
+<meta charset="utf-8" />
+ <body>
+ <table>
+ <thead> <tr><td>培训班学生资料</td></tr></thead>
+ <tbody>
+ <tr><td>编号</td><td>姓名</td><td>年龄</td><td>专业</td><td>电话</td></tr>
+ </tbody>
+ </table>
+ </body>
+
+</head>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProgressBar（进度条）</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+     
+  <link rel="stylesheet" href="../themes/default/easyui.css" type="text/css"></link>
+  <link rel="stylesheet" href="../themes/icon.css" type="text/css"></link>
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+  
+  <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+  </head>
+  
+  <body>   <!-- 静态方式 -->
+<!--       <input class="easyui-slider" value="12"  style="width:300px"    -->
+<!--         data-options="showTip:true,rule:[0,'|',25,'|',50,'|',75,'|',100]" />  -->
+            <!--动态方式 -->
+<!--             <div style="margin-left:50px"> -->
+<!--                                                     身高：<span id="num"  ></span>cm 备注：<span id="tip"  ></span><br/></br> -->
+            <div id="p" style="height:20ppx"></div>
+            
+            <script type="text/javascript">
+              $("#p").progressbar({
+                  //value:"30"
+              });
+            </script>
+            <script type="text/javascript">
+              setInterval(function(){
+               		var value = $('#p').progressbar('getValue'); 
+					if (value < 100){ 
+					value += Math.floor(Math.random() * 10); 
+					$('#p').progressbar('setValue', value); 
+					} 
+                  },1000);
+            </script>
+  </body>
+</html>

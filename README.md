@@ -107,7 +107,7 @@ public class TestDemo2 {
 		ObjectInputStream ois=new ObjectInputStream(fis);
 		try {
 			while(true) {
-			Student stu=(Student) ois.readObject();
+			Student stu=(Student) ois.readObject();//这里不调用Student类的构造方法
 			System.out.println(stu);
 			}
 		} catch (EOFException e) { //一定要在这里添加处理代码，否则程序运行的时候会出错

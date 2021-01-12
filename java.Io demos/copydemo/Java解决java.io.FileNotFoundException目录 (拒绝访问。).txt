@@ -1,0 +1,109 @@
+Java解决java.io.FileNotFoundException: E:\work\work (拒绝访问。)
+
+版权
+一、问题
+在使用FileInputStream或FileOutputStream时会遇到如下问题1和问题2。
+问题1：
+
+java.io.FileNotFoundException: .\xxx\xxx.txt (系统找不到指定的路径。)
+    at java.io.FileOutputStream.open(Native Method)
+    at java.io.FileOutputStream.<init>(Unknown Source)
+    at java.io.FileOutputStream.<init>(Unknown Source)
+    at com.yaohong.test.InputStreamTest.fileInputStream(InputStreamTest.java:13)
+    at com.yaohong.test.InputStreamTest.main(InputStreamTest.java:27)
+ 
+问题2：
+
+java.io.FileNotFoundException: .\xx\xx (拒绝访问。)
+    at java.io.FileOutputStream.open(Native Method)
+    at java.io.FileOutputStream.<init>(Unknown Source)
+    at java.io.FileOutputStream.<init>(Unknown Source)
+    at com.yaohong.test.InputStreamTest.fileInputStream(InputStreamTest.java:13)
+    at com.yaohong.test.InputStreamTest.main(InputStreamTest.java:27)
+
+二、分析
+在进行分析时，我得说清楚什么时候抛拒绝访问，什么时候抛找不到指定路径。原因是这样的，在构造一个File对象时，指定的文件路径是什么都可以，就算不存在也能够构造File对象，但是，现在你要对文件进行输入输出操作，也就是InputStream和OutputStream操作时，如果填写的路径不存在，那么就会报系统找不到指定路径，如果指定的是目录时，就会报拒绝访问异常。看了这个前提之后，在继续往下读。
+
+当遇到问题1时，的确是当前所指定的文件不存在或者目录不存在。
+当遇到第二个问题时，是因为你访问的是一个文件目录，如果这个目录没有权限访问或者是目录不存在，就会抛出问题2的异常。
+
+三、解决办法
+第一个的解决办法是，先判断一下当前文件是否存在，如果存在则略过，如果不存在，在创建，具体做法如下：
+
+//在填写文件路径时，一定要写上具体的文件名称（xx.txt），否则会出现拒绝访问。
+File file = new File("./mywork/work.txt");
+if(!file.exists()){
+    //先得到文件的上级目录，并创建上级目录，在创建文件
+    file.getParentFile().mkdir();
+    try {
+        //创建文件
+        file.createNewFile();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+第二个的解决办法是，在填写文件的路径时一定要具体到文件，如下：
+
+File file = new File("./mywork/work.txt");
+1
+而不能写成：
+
+    File file = new File("./mywork/");
+1
+因为这样你访问的是一个目录，因此就拒绝访问。
+
+四、源码（我的demo）
+
+1、文件输出流
+
+/**
+ * 文件输出流方法
+ */
+public void fileOutputStream() {
+    File file = new File("./mywork/work.txt");
+    FileOutputStream out = null;
+    try {
+        if (!file.exists()) {
+            // 先得到文件的上级目录，并创建上级目录，在创建文件
+            file.getParentFile().mkdir();
+            file.createNewFile();
+        }
+
+        //创建文件输出流
+        out = new FileOutputStream(file);
+        //将字符串转化为字节
+        byte[] byteArr = "FileInputStream Test".getBytes();
+        out.write(byteArr);
+        out.close();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+}
+
+2、文件输入流方法
+
+/**
+ * 文件输入流
+ */
+public void fileInputStream() {
+    File file = new File("./mywork/work.txt");
+    FileInputStream in = null;
+    //如果文件不存在，我们就抛出异常或者不在继续执行
+    //在实际应用中，尽量少用异常，会增加系统的负担
+    if (!file.exists()){
+        throw new FileNotFoundException();
+    }
+    try {
+        in = new FileInputStream(file);
+        byte bytArr[] = new byte[1024];
+        int len = in.read(bytArr);
+        System.out.println("Message: " + new String(bytArr, 0, len));
+        in.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}

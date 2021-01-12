@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+//这个是目录复制实例，比网上下载的一些demo好
 public class MyCopyDir {
     static void copy(File src, File dst) throws IOException {
         byte[] buf = new byte[1024];

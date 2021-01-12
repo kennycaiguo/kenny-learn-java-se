@@ -10,7 +10,7 @@ public class ScannerDemo2 {
         /*
          * while ((str = sc.nextLine()) != null) { System.out.println(str); } //这样子不好
          */
-        while (sc.hasNextLine()) {//一定要标准Scanner类还能读取到下一行，否则会报一个“no nextline”的异常
+        while (sc.hasNextLine()) {//一定要标准Scanner类还能读取到下一行，否则会报一个“ java.util.NoSuchElementException: No line found”的异常
             str = sc.nextLine();
             System.out.println(str);
         }

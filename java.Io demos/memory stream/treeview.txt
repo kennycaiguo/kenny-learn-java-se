@@ -1,0 +1,160 @@
+1.首先，为TreeView控件添加一个AfterCkeck事件处理方法和一个NodeMouseClicke方法
+2.具体代码：
+写法1.
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace treeViewDemo
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            treeView1.Nodes.Clear();
+            string dbname = "kennyDb";
+            string sql = "select Id,Mname,ParentId from MenuInfos";
+            //SqlServerTool是自己封装的类库dll，通过添加引用的方法引用进来
+            DataTable dt =SqlServerTool.Dbutil.GetDataTable(sql,1,dbname);
+            //创建利用递归所有节点
+            CreateNode(dt, null, 0);
+            treeView1.CheckBoxes = true;
+            
+
+        }
+
+       
+
+        private void CreateNode(DataTable dt,TreeNode pNode,int parentId)
+        {
+            //.获取要创建的节点数据
+            DataRow[] rows=dt.Select("ParentId=" + parentId);
+            if (rows.Length > 0)
+            {
+                foreach (DataRow r in rows)
+                {
+                    TreeNode node = new TreeNode();
+                    node.Name = r["id"].ToString();
+                    node.Text = r["MName"].ToString();
+                    
+                    //决定是否直接添加到treeView
+                    if (pNode != null)
+                    {
+                        pNode.Nodes.Add(node);
+                    }
+                    else
+                    {
+                        treeView1.Nodes.Add(node);
+                    }
+                    //判断这个节点下面有没有子节点，有就递归创建
+                    CreateNode(dt, node, int.Parse(node.Name));
+                }
+            }
+        }
+
+       bool isMouseClick = true;
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+           isMouseClick = false;
+            //子节点勾选
+            SetChildState(e.Node);
+            SetParentState(e.Node);
+            isMouseClick = true;
+        }
+        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+             if(e.Action==TreeViewAction.ByMouse|| e.Action == TreeViewAction.ByKeyboard)
+            {
+               treeView1.SelectedNode = e.Node;
+            }
+        }
+        private void SetChildState(TreeNode n)
+        {
+            if (n.Nodes.Count > 0)
+            {
+                foreach (TreeNode cn in n.Nodes)
+                {
+                    cn.Checked = n.Checked;
+                    SetChildState(cn);
+                }
+            }
+        }
+
+        private void SetParentState(TreeNode node)
+        {
+            TreeNode pNode = node.Parent;
+            if (pNode != null)
+            {
+
+                bool bl = false;
+                foreach (TreeNode item in pNode.Nodes)
+                {
+
+                    if (item.Checked)
+                    {
+                        bl = true;
+                        break;
+                    }
+                }
+                pNode.Checked = bl;
+                SetParentState(pNode);
+            }
+        }
+    }
+}
+
+.写法2（仅仅留下核心代码，这里不需要NodeMouseClick事件代码）
+
+  private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+             if(e.Action==TreeViewAction.ByMouse|| e.Action == TreeViewAction.ByKeyboard)
+            {
+                SetChildState(e.Node);
+                SetParentState(e.Node);
+                
+            }
+        }
+
+  private void SetChildState(TreeNode n)
+        {
+            if (n.Nodes.Count > 0)
+            {
+                foreach (TreeNode cn in n.Nodes)
+                {
+                    cn.Checked = n.Checked;
+                    SetChildState(cn);
+                }
+            }
+        }
+
+        private void SetParentState(TreeNode node)
+        {
+            TreeNode pNode = node.Parent;
+            if (pNode != null)
+            {
+
+                bool bl = false;
+                foreach (TreeNode item in pNode.Nodes)
+                {
+
+                    if (item.Checked)
+                    {
+                        bl = true;
+                        break;
+                    }
+                }
+                pNode.Checked = bl;
+                SetParentState(pNode);
+            }
+        }

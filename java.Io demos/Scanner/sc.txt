@@ -1,0 +1,3 @@
+I want to find out if Scanner can read lines from a file.
+If it can ,that can be so koolllllll!!!
+now lets see what happen....

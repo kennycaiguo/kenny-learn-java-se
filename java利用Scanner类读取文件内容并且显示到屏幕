@@ -1,0 +1,23 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ScannerDemo2 {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(new FileInputStream("sc.txt"));
+        String str;
+
+        /*
+         * while ((str = sc.nextLine()) != null) { System.out.println(str); } //这样子不好
+         */
+        while (sc.hasNextLine()) {//一定要标准Scanner类还能读取到下一行，否则会报一个“no nextline”的异常
+            str = sc.nextLine();
+            System.out.println(str);
+        }
+    }
+}
+
+sc.txt的内容：
+I want to find out if Scanner can read lines from a file.
+If it can ,that can be so koolllllll!!!
+now lets see what happen....

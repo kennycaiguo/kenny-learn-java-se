@@ -88,4 +88,88 @@ public class SegmaTotalTest2 {
 }
 结果：171700
 
+# java 在不知道有多少个对象的情况下，把所有的对象都读取进内存
+//主程序
+package org.kenny;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+ 
+
+
+public class TestDemo2 {
+
+	public static void main(String[] args) throws IOException, Exception {
+		 
+		FileInputStream fis=new FileInputStream("stu.dat");
+		ObjectInputStream ois=new ObjectInputStream(fis);
+		try {
+			while(true) {
+			Student stu=(Student) ois.readObject();
+			System.out.println(stu);
+			}
+		} catch (EOFException e) { //一定要在这里添加处理代码，否则程序运行的时候会出错
+			// TODO Auto-generated catch block
+			System.out.println("End of file");
+		}
+	}
+
+}
+
+//和主程序在同一个包下面的Student.java文件
+package org.kenny;
+
+import java.io.Serializable;
+
+public class Student implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5043645740290553040L;
+	private String name;
+	private String gender;
+	private int age;
+	private double score;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
+	
+	public Student(String name, String gender, int age, double score) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.score = score;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Student[name:"+this.name+",gender:"+this.gender+",age:"+this.age+",score:"+this.score+"]";
+	}
+}
+ 

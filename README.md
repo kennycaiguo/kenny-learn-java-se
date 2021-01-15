@@ -4,6 +4,7 @@ java学习
 # <a href="https://juejin.cn/post/6844904071145455624">13 个最火的 SpringBoot 实战开源项目推荐！总有一个适合你！</a>
 # <a href="https://projects.eclipse.org/">Eclipse 开源项目</a>
 # <a href="https://git.eclipse.org/c/?p=about">eclipse source code</a>
+# <a href="https://github.com/kennycaiguo/play-samples">Java samples,java chatroom sample</a>
 # java 实现输入10进制数输出二进制数
 import java.util.Scanner;
 

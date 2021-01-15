@@ -7,6 +7,7 @@ java学习
 # <a href="https://github.com/kennycaiguo/play-samples">Java samples,java chatroom sample</a>
 # <a href="https://github.com/kennycaiguo/ChatRoom-java">基于JAVA的即时通讯项目</a>
 # <a href="https://github.com/kennycaiguo/javaWebChatroom">java网络聊天室，支持传图片，发表情，截图，群聊私聊功能。</a>
+# <a href="https://github.com/kennycaiguo/java-wechat">A High Copy WeChat ,SNS APP (高仿微信)</a>
 # java 实现输入10进制数输出二进制数
 import java.util.Scanner;
 

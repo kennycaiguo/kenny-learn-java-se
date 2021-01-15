@@ -5,6 +5,7 @@ java学习
 # <a href="https://projects.eclipse.org/">Eclipse 开源项目</a>
 # <a href="https://git.eclipse.org/c/?p=about">eclipse source code</a>
 # <a href="https://github.com/kennycaiguo/play-samples">Java samples,java chatroom sample</a>
+# <a href="https://github.com/kennycaiguo/ChatRoom-java">基于JAVA的即时通讯项目</a>
 # java 实现输入10进制数输出二进制数
 import java.util.Scanner;
 

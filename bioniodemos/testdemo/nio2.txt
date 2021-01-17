@@ -1,0 +1,23 @@
+nio就是当时说的newio，是当时提出的新思想，它与以前的流操作文件的发生不一样。他是通过channel
+和buffer来操作文件的。
+1.ByteBuffer类的创建方式1：ByteBuffer buffer=ByteBuffer.allocate(20);
+2.ByteBuffer类的创建方式2：ByteBuffer buffer=ByteBuffer.wrap(byte[] b);
+3.FileChannel类的创建方法：
+  (1).创建输出流：FileOutputStream fos=new FileOutputStream("hello.txt");
+  (2).利用输出流创建FileChannel：FileChannel channel = fos.getChannel();
+4.利用FileChannel将ByteBuffer写入文件：  
+   //(1)创建文件输出流
+	FileOutputStream fos=new FileOutputStream("hello.txt");
+	//(2)利用输出流创建channel
+	FileChannel channel = fos.getChannel();
+	//(3)调用wrap方法利用需要写入文件的内容创建buffer
+	ByteBuffer buffer2=ByteBuffer.wrap("Hello world! i am using Nio!!!".getBytes());
+	//（4）利用FileChannel将ByteBuffer写入文件：  
+	channel.write(buffer2);
+	//(5)关闭通道
+	channel.close();
+ByteBuffer类有3个指针，position,limit,capacity,	ByteBuffer类有一个flip()方法可以将position设置为0.
+flip()方法的作用从写模式变为读模式。ByteBuffer类有一个clear()方法将position设置为0，limit也是
+设置为0
+
+问题：为什么如果buffer设置的小，无法读完文件			

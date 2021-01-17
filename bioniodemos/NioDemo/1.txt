@@ -1,0 +1,2 @@
+name:kenny,age:30,salary:10000000.00
+
